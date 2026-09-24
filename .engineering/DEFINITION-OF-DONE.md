@@ -12,6 +12,10 @@ At minimum, the final DoD must cover:
 - Security/privacy review, secrets handling, data retention/deletion and legal/policy requirements are reviewed.
 - Installation, backup/restore, upgrade, rollback, monitoring, support and operator documentation are tested.
 - Zero unresolved CRITICAL/HIGH findings; medium/low dispositions are explicit.
+- Every product module has registered, isolated harnesses for relevant unit/component behavior and each boundary it owns; each Work Order maps requirements/defects to the smallest sufficient harness set and includes shared-dependency regression where applicable.
+- Harnesses use deterministic fixtures, namespaced disposable state, bounded setup/teardown and no production data or live financial/publishing side effects.
+- A central harness registry records owner, layer, command, trigger, dependencies, fixtures, timeout and evidence for each harness.
+- Every Hive Studio project response has a versioned checkpoint event in GitHub, and the canonical checkpoint accurately points to the latest accepted state and next action.
 - Exact-head CI, independent audit and Checkpoint Delta are approved.
 
 Thresholds, providers and requirement-to-evidence mapping remain open until planning. This draft does not authorize release.

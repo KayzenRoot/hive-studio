@@ -43,3 +43,19 @@ The GEF source validation workflow is isolated from normal product PRs and runs 
 ## Review, evidence and checkpoint
 
 Each executor handoff reports base/head SHA, changed files, decisions, exact commands and outcomes, checks not run and why, risks, evidence links, and a proposed Checkpoint Delta. “Completed” or a green unrelated workflow is not evidence. Review in Brazilian Portuguese. No next increment while the current one is CORRECTION REQUIRED or BLOCKED. An executor may propose but may not promote a canonical checkpoint before independent exact-head audit.
+
+
+## Harness-first development contract
+
+- Every product module must own or declare one or more isolated, problem-focused test harnesses. Register each harness ID, owner/module, layer, purpose, command, trigger, dependency closure, deterministic fixtures, isolation/cleanup rules, hard timeout and evidence location in `.engineering/HARNESS-REGISTRY.json`.
+- A Work Order and executor prompt must map each acceptance criterion and reported defect to the smallest sufficient harness set. Include directly impacted contract harnesses when a shared component or boundary changes; isolation is not permission to omit relevant regressions.
+- Harnesses must use disposable, namespaced state and deterministic fixtures. Never point a harness at production data/accounts, real ad spend, payment, publishing or refund actions. External sandboxes require explicit Work Order authorization and bounded credentials.
+- Run only the selected harnesses and required T0 gate. Capture a concise failure packet (harness ID, command, failing assertion, relevant paths, environment/fixture fingerprint and evidence link); do not paste whole logs or rediscover the repository on each prompt.
+- Do not choose a runner/framework or build product harnesses before HVS-PLAN-001 freezes module boundaries and architecture. The active foundation harness is the fast contract gate.
+
+## Per-response project checkpoints
+
+- Every response that advances or discusses Hive Studio project work must create a durable checkpoint event under `.engineering/checkpoints/`, with a unique ID, current base/head or candidate PR, Work Order, status, changes/decisions, tests and results (or explicit `NO_STATE_CHANGE` reason), risks/blockers and one next action.
+- Update `.engineering/CHECKPOINT.md` as the current concise pointer/status summary. Keep response events append-only; a checkpoint event records state but does not approve its own change.
+- Persist each event through the normal branch → PR → bounded CI → exact-head audit → checkpoint approval → merge flow. If GitHub persistence is unavailable, clearly label the checkpoint unpersisted and do not claim it is in the source of truth.
+- Project responses must end with the checkpoint ID and GitHub evidence link. Unrelated non-project conversations do not create Hive Studio checkpoint noise.

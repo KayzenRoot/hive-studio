@@ -12,7 +12,15 @@ Status: `DRAFT — FOUNDATION GATES ACTIVE; PRODUCT TEST PLAN OPEN`
 | T3 Full regression | Scheduled or release-bound; parallel shards | Cross-module regression | 30 minutes per job |
 | T4 Release assurance | Explicit pre-release gate for financial/security critical flows | Safety, recovery, permissions and reconciliation | 45 minutes per job |
 
-The current repository implements T0 without initializing submodules, T0a on integration-pin changes, and a separate GEF source-validation job capped at 30 minutes. Product T1–T4 suites are not claimed to exist.
+The current repository implements T0 without initializing submodules, T0a on integration-pin changes, and a separate GEF source-validation job capped at 30 minutes. The foundation T0 contract is registered as `HAR-FOUNDATION-T0`. Product-module harnesses are not claimed to exist; HVS-PLAN-001 must map every planned module and contract to a harness before implementation.
+
+## Harness targeting and isolation
+- Resolve the changed path/requirement/defect to registry IDs first; run the smallest sufficient affected harness set plus required T0. Include dependency/contract harnesses for shared libraries and external boundaries; never use narrow targeting to hide plausible regressions.
+- Each harness declares owner, layer, purpose, command, triggers, impacted dependencies, fixtures, service requirements, isolation and cleanup, network/side-effect boundary, timeout and evidence destination.
+- Use deterministic seeds, fixed clocks where relevant, sanitized synthetic fixtures and disposable, uniquely namespaced state. Setup, health checks and teardown are bounded. A failed teardown is reported and isolated from developer data.
+- Unit/component harnesses stay inside a module; contract harnesses use controlled fakes or explicit sandboxes; integration/workflow harnesses run only for impacted boundaries; performance and migration/recovery harnesses are opt-in or release-bound.
+- Never use production credentials/data or trigger live advertising, payments, publishing, refunds or permission changes. Real external sandbox work requires explicit approval and a dedicated bounded Work Order.
+- Cache only when commit, harness configuration and fixture fingerprints match. Reuse concise failure packets instead of full logs or repository rediscovery.
 
 ## Execution rules
 - Run cheap static and deterministic checks before tests that start services.

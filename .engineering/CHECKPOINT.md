@@ -1,25 +1,20 @@
 # Checkpoint
 
-Status: `HVS-BOOT-001_APPROVED`
+Status: `HVS-GOV-001_CANDIDATE_PENDING_AUDIT`
 
 - Repository: `KayzenRoot/hive-studio`
-- Accepted Work Order: `HVS-BOOT-001`
-- Base commit: `9053a1aef09882b13d501b6238623da6060b30cb`
-- Audited candidate head before this checkpoint delta: `b5acd2594a5c8462a937294af3af294b72a63914`
-- Candidate branch: `foundation/hvs-boot-001-gef-hive` (PR #1)
-- Product code: none; full product planning remains the next increment.
-- GEF Bootstrap: v1.0.0, exact source pin verified; full validation and dependency audit passed.
-- HIVE: v1.0.3, exact source pin and VERSION verified; upstream release-document mismatch remains explicitly tracked.
-- T0 foundation gate: passed in 6 seconds without submodule downloads.
-- Integration source contract: passed in 11 seconds.
-- GEF full validation and dependency audit: passed in 19 seconds.
-- HIVE Docker/runtime health is not claimed; local service startup remains an operator step.
-- Evidence: [Fast Gate](https://github.com/KayzenRoot/hive-studio/actions/runs/36011458906), [GEF Source Validation](https://github.com/KayzenRoot/hive-studio/actions/runs/36011459102), [Integration Source Contract](https://github.com/KayzenRoot/hive-studio/actions/runs/36011459288).
+- Last accepted Work Order: `HVS-BOOT-001`
+- Active Work Order: `HVS-GOV-001`
+- Base commit: `fc43d93e219b4266a6d1c2b4745284fdbc1b98e0`
+- Candidate branch: `foundation/hvs-gov-001-harness-checkpoint`
+- Current response checkpoint: `CP-HVS-GOV-001-001`
+- Purpose of this increment: make harness isolation, targeted testing, and durable per-response checkpoints canonical.
+- Completed baseline: GEF Bootstrap v1.0.0 and HIVE v1.0.3 are installed as exact submodules; foundation CI is bounded.
+- Current candidate change: add the harness architecture/registry contract and versioned per-response checkpoint protocol.
+- Product application code and product-module harnesses: not started; module boundaries and runtime remain for HVS-PLAN-001.
+- Tests: candidate pending T0 and exact-head audit; no product/runtime tests apply to this documentation/validator increment.
+- Stop condition: do not start product implementation until HVS-PLAN-001 approves the complete Source Pack and maps modules to harness IDs.
 
-## Accepted Checkpoint Delta
+## Next action
 
-Accept the immutable GEF/HIVE submodule pins, source/version checks, agent execution contract, Source Pack starter, and bounded CI. Keep product implementation blocked until HVS-PLAN-001 freezes the complete product Source Pack.
-
-## Next increment
-
-`HVS-PLAN-001`: complete product discovery and approve the full requirements, scope, architecture, security, test plan, deployment, and Definition of Done before product implementation.
+Finish HVS-GOV-001 validation and audit. Then continue with HVS-PLAN-001, including complete product discovery and the module-to-harness map.
