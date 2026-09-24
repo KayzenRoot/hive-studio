@@ -61,7 +61,7 @@ No direct main mutations beyond the minimum empty-repository seed required to cr
 - Do not claim Docker/HIVE runtime health: no local Docker runtime test is part of this increment.
 
 ## DELIVERABLES
-One focused PR, pinned submodules, Source Pack starter, AGENTS/Codex contract, bounded CI, exact-head evidence bundle and proposed Checkpoint Delta.
+One focused PR, pinned submodules, Source Pack starter, AGENTS/Codex contract, bounded CI, exact-head evidence bundle and accepted Checkpoint Delta.
 
 ## REVIEW FORMAT
 Final review in Brazilian Portuguese: verdict, base/head, files, check names/results/durations, tests not run and reason, upstream HIVE caveat, risks, exact-head evidence and checkpoint disposition.

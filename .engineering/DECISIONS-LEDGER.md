@@ -1,6 +1,6 @@
 # Decisions Ledger
 
-Status: `DRAFT — FOUNDATION REVIEW PENDING`
+Status: `DRAFT — PRODUCT DECISIONS REMAIN OPEN`
 
 | ID | Decision | Status | Authority / note |
 |---|---|---|---|

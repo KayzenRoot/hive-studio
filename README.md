@@ -4,7 +4,7 @@ A complete platform for creating and operating digital products and their market
 
 ## Current status
 
-- Foundation setup is proposed on branch `foundation/hvs-boot-001-gef-hive`.
+- Foundation setup is approved; product implementation remains blocked until `HVS-PLAN-001` freezes the full Source Pack.
 - No product application code, external API writes, social publishing, or advertising spend has been implemented.
 - Canonical planning starts from `.engineering/CHECKPOINT.md` and `.engineering/SOURCE-HIERARCHY.md`.
 
