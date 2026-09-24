@@ -1,38 +1,32 @@
-# HIVE Development Integration
+# HIVE Local Development Integration
 
-## Installed version and boundary
+## Pinned source and readiness
+
 - Published GitHub release tag: `v1.0.3`
 - Exact tag commit: `52bd3dab54dd4f16264072e198ed1fc23168f7fa`
 - Path: `integrations/hive`
-- License: Apache-2.0; retained as an unmodified submodule.
-- Current intent: local development context/memory support. Product-runtime dependency is undecided.
+- License: Apache-2.0; retained as an unmodified Git submodule.
+- Intended use here: local development context/memory support, not a production dependency.
 
-GitHub currently labels v1.0.3 a published stable release and publishes `hive-v1.0.3.zip` with SHA-256 `bad6b3f892221ecb5477f1f3f7546a0f83e611014d1c130d24089e607ca4483e`. However, the tagged README, release notes and candidate receipt still state that v1.0.3 is not published. The published release record and armed publisher request support pinning the tag, but this setup does not independently download the archive or validate its attached receipt. Reconcile the mismatch before using that receipt as release assurance; do not change upstream files from this project.
+GitHub labels v1.0.3 as a published stable release, but the HIVE v1.0.3 installation guide says HIVE is pre-alpha and not production-ready. Treat “stable” as the release channel, not production readiness.
 
-## Initialize local HIVE
+The tagged README, release notes and candidate receipt also still state that v1.0.3 is not published, while GitHub reports the release as published stable and the tag includes an armed publisher request. GitHub lists `hive-v1.0.3.zip` with SHA-256 `bad6b3f892221ecb5477f1f3f7546a0f83e611014d1c130d24089e607ca4483e`; this setup records that metadata but does not independently download/re-hash the archive or validate the receipt. Reconcile the upstream mismatch before relying on that receipt as release assurance. Do not edit the upstream HIVE repository from this project.
 
-After cloning Hive Studio with submodules, use Docker Desktop/Compose and follow the pinned HIVE installation guide. Example from the HIVE submodule directory:
+## Start HIVE locally
 
-```powershell
-Copy-Item .env.example .env
-docker compose config --quiet
-docker compose up -d --build
-docker compose ps
-```
+This repository pins HIVE; it does not start Docker or choose machine-specific paths automatically. Use the pinned `integrations/hive/docs/INSTALLATION.md` as the source of truth.
 
-On Linux/macOS:
+1. Clone Hive Studio with submodules:
+   `git clone --recurse-submodules https://github.com/KayzenRoot/hive-studio.git`
+2. Open a terminal in `integrations/hive` and read the OS-specific prerequisites.
+3. Choose two separate local directories: one writable HIVE data root and one narrowly scoped project root containing only repositories you explicitly want HIVE to index. Do not point the project root at a broad home/workspace folder or place it inside the HIVE data root.
+4. Copy `.env.example` to `.env` if it does not already exist. Set `HIVE_DATA_ROOT` and `HIVE_PROJECTS_ROOT` there to those separate paths; keep `.env` local and uncommitted.
+5. Follow the upstream doctor/install flow for your OS. For Windows, the tagged guide uses:
+   `python scripts/hive_install.py doctor`
+   then `python scripts/hive_install.py install --yes`.
+   For Linux, the tagged guide uses `python scripts/hive_install.py doctor`, `docker compose config --quiet`, then `docker compose up -d --build`.
+6. Check `docker compose ps` and the health endpoint at `http://localhost:8000/api/v1/health`; the dashboard defaults to `http://localhost:3000`.
 
-```sh
-cp .env.example .env
-docker compose config --quiet
-docker compose up -d --build
-docker compose ps
-```
+HIVE v1.0.3 auto-discovers valid Git repositories that are immediate children of `HIVE_PROJECTS_ROOT` by default, scanning at a bounded interval and with a maximum project count. If you want Hive Studio indexed, put its committed clone as an immediate child of the chosen dedicated project root. A root shared with unrelated/sensitive repositories could expose them to local indexing. Do not assume registration succeeded until HIVE reports the repository and indexing status.
 
-HIVE data and its `.env` stay local and must not be committed. Do not use `docker compose down -v` during setup or upgrade.
-
-## Register this repository safely
-
-HIVE v1.0.3 can auto-discover immediate child Git repositories under `HIVE_PROJECTS_ROOT` (enabled by default). Before pointing HIVE at a host folder, choose a dedicated directory containing only projects you intend HIVE to index; a broad parent folder may expose sibling repositories to local indexing. The mount is read-only in HIVE Compose. Do not assume HIVE has indexed this repository until its project registry and indexing status show success.
-
-For installation prerequisites, storage, backups, health checks and upgrades, use `integrations/hive/docs/INSTALLATION.md`, `UPGRADING.md` and the tagged release notes.
+HIVE's `.env` and data stay local. Never use `docker compose down -v` for setup or upgrades; follow HIVE's backup and upgrade guide before maintenance.

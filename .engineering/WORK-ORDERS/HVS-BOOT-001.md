@@ -72,7 +72,7 @@ Final review in Brazilian Portuguese: verdict, base/head, files, check names/res
 - The GitHub PR merge tree matched the candidate tree exactly (`583325bf781908d61c46089122f6052ea35144ba`).
 - Fast Gate: PASS, 6 seconds. Integration Source Contract: PASS, 11 seconds. GEF full validation plus `npm audit --audit-level=high`: PASS, 19 seconds.
 - An earlier fast-gate attempt exposed a parser defect with Git's tagged submodule output; the verifier was corrected and the final candidate passed.
-- HIVE Docker startup/runtime was not run in this repository setup; no runtime-health claim is made.
+- HIVE Docker startup/runtime was not run in this repository setup; no runtime-health claim is made. Final documentation review follows HIVE's pinned doctor/install instructions and calls out its upstream pre-alpha readiness statement.
 
 ## STOP CONDITION
 APPROVED only if all criteria have exact-head evidence and no unresolved HIGH/CRITICAL defect. Otherwise issue only a same-Work-Order Correction Delta or mark BLOCKED. Do not create HVS-PLAN-001 implementation work before approval.
