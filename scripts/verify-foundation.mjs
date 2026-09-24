@@ -39,7 +39,10 @@ if (status.error || status.status !== 0) {
 } else {
   const lines = status.stdout.split(/\r?\n/);
   for (const [path, sha] of expected) {
-    const line = lines.find((entry) => entry.trimEnd().endsWith(path));
+    const line = lines.find((entry) => {
+      const candidate = entry.match(/^([ +\-]?)([0-9a-f]{40})\s+(\S+)/);
+      return candidate?.[3] === path;
+    });
     const match = line?.match(/^([ +\-]?)([0-9a-f]{40})\s+(\S+)/);
     if (!match) {
       errors.push("Submodule is not initialized: " + path);
