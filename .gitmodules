@@ -1,0 +1,6 @@
+[submodule "integrations/gef-bootstrap"]
+	path = integrations/gef-bootstrap
+	url = https://github.com/KayzenRoot/gef-bootstrap.git
+[submodule "integrations/hive"]
+	path = integrations/hive
+	url = https://github.com/KayzenRoot/hive.git

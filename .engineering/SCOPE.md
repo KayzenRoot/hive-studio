@@ -1,0 +1,15 @@
+# Scope
+
+Status: `DRAFT — PRODUCT PLANNING NOT COMPLETE`
+
+## Product target
+The complete platform is intended to cover an end-to-end workflow for creating, preparing, publishing and operating digital products and their marketing, including the domains listed in `.engineering/REQUIREMENTS.md`. This is the final scope target, not a promise that every conceivable channel or feature is included.
+
+## This foundation increment (HVS-BOOT-001)
+Included: pin GEF Bootstrap and HIVE as exact submodules; add repository instructions, initial canonical Source Pack, a bounded foundation validator, and time-capped CI gates.
+
+## Explicitly not included in HVS-BOOT-001
+No product feature, user interface, AI provider, e-book generation, Kiwify product creation, checkout, Instagram publishing, Meta Ads creation, budget mutation, production secrets, deployment, or live external integration.
+
+## Scope control
+Classify proposed capabilities NECESSARY, IMPORTANT, FUTURE or OUT OF SCOPE against the complete-product DoD. Only approved NECESSARY work enters a Work Order automatically. No scope is frozen by this draft.

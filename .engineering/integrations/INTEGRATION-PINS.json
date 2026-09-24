@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "APPROVED",
+  "integrations": {
+    "gef_bootstrap": {
+      "repository": "https://github.com/KayzenRoot/gef-bootstrap",
+      "path": "integrations/gef-bootstrap",
+      "ref": "v1.0.0",
+      "commit": "866fe3af8cccc65c929aaf6a47a924401fa448b3",
+      "distribution": "source workspace; not a published npm package or global CLI",
+      "license": "All Rights Reserved",
+      "adoption": "Git submodule; no upstream source copied into this repository"
+    },
+    "hive": {
+      "repository": "https://github.com/KayzenRoot/hive",
+      "path": "integrations/hive",
+      "ref": "v1.0.3",
+      "commit": "52bd3dab54dd4f16264072e198ed1fc23168f7fa",
+      "release_url": "https://github.com/KayzenRoot/hive/releases/tag/v1.0.3",
+      "release_state": "GitHub reports published stable release on 2026-09-24",
+      "release_asset": "hive-v1.0.3.zip",
+      "release_asset_sha256": "bad6b3f892221ecb5477f1f3f7546a0f83e611014d1c130d24089e607ca4483e",
+      "license": "Apache-2.0",
+      "adoption": "Git submodule pinned to tag commit",
+      "known_upstream_documentation_mismatch": "The v1.0.3 README, release notes and candidate receipt in the tagged source still say release candidate/not published, while GitHub reports the v1.0.3 release published stable and the tag includes an armed publisher request. The archive digest is recorded from GitHub metadata; this setup does not independently download/re-hash the archive or assert the receipt contents."
+    }
+  }
+}
