@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "work_order_id": "HVS-BOOT-001",
+  "repository": "KayzenRoot/hive-studio",
+  "base": {
+    "branch": "main",
+    "commit": "9053a1aef09882b13d501b6238623da6060b30cb"
+  },
+  "candidate_branch": "foundation/hvs-boot-001-gef-hive",
+  "candidate_head": null,
+  "critical_sources": [
+    {
+      "repository": "KayzenRoot/gef-bootstrap",
+      "ref": "v1.0.0",
+      "commit": "866fe3af8cccc65c929aaf6a47a924401fa448b3",
+      "role": "engineering process reference"
+    },
+    {
+      "repository": "KayzenRoot/hive",
+      "ref": "v1.0.3",
+      "commit": "52bd3dab54dd4f16264072e198ed1fc23168f7fa",
+      "role": "local development-support source",
+      "caveat": "GitHub release is published stable; in-tag README and release-candidate receipt still state not published."
+    }
+  ],
+  "stale_if": [
+    "main base changes before integration",
+    "either pinned tag or release identity is corrected/superseded before audit",
+    "canonical project direction or an approved ADR changes"
+  ]
+}
