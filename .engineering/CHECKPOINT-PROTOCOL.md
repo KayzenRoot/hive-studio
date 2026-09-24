@@ -1,6 +1,6 @@
 # Checkpoint Protocol
 
-Status: `CANDIDATE — HVS-GOV-001 PENDING AUDIT`
+Status: `APPROVED — ACTIVE CONTRACT`
 
 ## Scope
 

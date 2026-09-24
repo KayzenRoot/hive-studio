@@ -1,10 +1,12 @@
 # HVS-GOV-001 — Harness-First Development and Per-Response Checkpoints
 
-- Status: `IN_PROGRESS`
+- Status: `APPROVED`
 - Risk: `STANDARD` (cross-cutting engineering governance; no production or external side effects)
 - Repository: `KayzenRoot/hive-studio`
 - Base SHA: `fc43d93e219b4266a6d1c2b4745284fdbc1b98e0`
+- Audited candidate head: `3dbf95140d458fcee420a8ba57879bf15379f3f4`
 - Branch: `foundation/hvs-gov-001-harness-checkpoint`
+- Evidence: [PR #2](https://github.com/KayzenRoot/hive-studio/pull/2)
 
 ## OBJECTIVE
 
@@ -19,8 +21,8 @@ HVS-BOOT-001 is approved and merged. Product modules, runtime, database and test
 - Add canonical harness architecture, machine-readable foundation registry and per-response checkpoint protocol.
 - Update architecture, requirements, scope, Definition of Done, test plan, decisions, backlog, Source Hierarchy, AGENTS/Copilot instructions and Codex prompt contract.
 - Extend the deterministic T0 verifier to validate the harness registry and checkpoint-event presence.
-- Create this Work Order, exact-base Context Lock and checkpoint event `CP-HVS-GOV-001-001`.
-- Record the accepted next step as HVS-PLAN-001 with a requirement-to-harness map.
+- Create this Work Order, exact-base Context Lock and checkpoint events `CP-HVS-GOV-001-001` and `CP-HVS-GOV-001-002`.
+- Record HVS-PLAN-001 as the next increment with a requirement-to-harness map.
 
 ## OUT OF SCOPE
 
@@ -60,13 +62,14 @@ Preserve HVS-BOOT-001 and its exact integration pins. No force-push, main mutati
 4. Every project-response checkpoint has an explicit schema and GitHub persistence/PR flow, including a truthful no-state-change event.
 5. Architecture/Requirements/Scope/DoD/Test Plan/Decisions/Backlog/Agent guidance consistently include these requirements.
 6. No product stack, runner, or module structure is prematurely selected.
-7. The final exact head passes T0 within five minutes; diff and evidence are audited; checkpoint delta is approved only after that audit.
+7. The exact implementation head passed T0 within five minutes; exact-head diff and evidence were audited and accepted. The approval/checkpoint metadata delta is subject to the final PR T0 check.
 
 ## TESTS
 
-- `node scripts/verify-foundation.mjs` on the final candidate head; hard limit 5 minutes.
-- Validate registry JSON, unique IDs and finite timeout bounds through the T0 verifier.
-- Review exact-base diff, repository status, checkpoint event, updated source hierarchy and absence of secrets or product code.
+- `node scripts/verify-foundation.mjs`: passed via [Foundation Fast Gate run #36014078629](https://github.com/KayzenRoot/hive-studio/actions/runs/36014078629), on head `3dbf95140d458fcee420a8ba57879bf15379f3f4`, in approximately 6 seconds.
+- Registry JSON, unique IDs, explicit policy fields, and finite timeout bounds are validated by T0.
+- Exact-base diff audited: 20 files; no secrets, product code, integration-pin changes, or external side effects found.
+- The final checkpoint-approval commit must pass the same T0 before merge.
 - No product-module tests, GEF full suite, HIVE Docker tests or benchmark are relevant; no integration pins changed.
 
 ## DELIVERABLES
@@ -75,8 +78,8 @@ One focused PR, harness architecture and registry, checkpoint protocol, cross-li
 
 ## REVIEW FORMAT
 
-Final response in Brazilian Portuguese: verdict, base/head, changed files, checkpoint ID/link, CI command/result/duration, errors corrected, risks/omitted checks and next necessary increment.
+Final response in Brazilian Portuguese: verdict, base/head, changed files, decisions, checkpoint ID/link, CI command/result/duration, omitted checks and reasons, remaining risks and next necessary increment.
 
 ## STOP CONDITION
 
-APPROVED only when all criteria have exact-head evidence and no unresolved HIGH/CRITICAL finding. Otherwise make only a same-Work-Order Correction Delta or mark BLOCKED. HVS-PLAN-001 is the only next increment; no product code before its Source Pack is approved.
+APPROVED only when all criteria have exact-head evidence and no unresolved HIGH/CRITICAL finding. HVS-PLAN-001 is the only next increment; no product code before its Source Pack is approved.
