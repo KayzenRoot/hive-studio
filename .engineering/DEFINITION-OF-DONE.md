@@ -19,3 +19,11 @@ At minimum, the final DoD must cover:
 - Exact-head CI, independent audit and Checkpoint Delta are approved.
 
 Thresholds, providers and requirement-to-evidence mapping remain open until planning. This draft does not authorize release.
+
+
+## E-book and growth criteria to quantify during planning
+
+- Every release has source/rights lineage for factual claims and visual assets, a reviewed manuscript, intentional typographic hierarchy, consistent cover/interior art direction, captions/alt text, accessibility metadata and a versioned preview.
+- PDF/EPUB candidate exports pass structural validation and rendered-page preflight for missing assets/fonts, overflow, navigation/link errors, legibility, metadata and supported-device behavior; numerical thresholds and supported devices are approved before implementation.
+- Sales experiments report qualified traffic, checkout completion, average order value, bump/upsell attach, fees, refunds and net contribution with sample size and attribution uncertainty. CTR or platform ROAS alone is not success evidence.
+- Customer-facing proof and product claims are source-backed; no fabricated testimonials, false scarcity or guaranteed earnings/sales claims.

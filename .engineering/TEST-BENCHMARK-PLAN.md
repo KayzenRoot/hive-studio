@@ -33,3 +33,8 @@ The current repository implements T0 without initializing submodules, T0a on int
 
 ## High-assurance future tests
 Any module that can spend money, publish content, refund or alter account permissions must include dry-run and sandbox contracts, hard-cap boundary tests, kill-switch tests, idempotency/replay tests, partial-failure recovery, spend/revenue reconciliation and an independent exact-head audit. Tests must use isolated test accounts, never the user's live budget by default.
+
+
+## HVS-PLAN-001 module-harness candidate
+
+MODULE-MAP.json and HARNESS-REGISTRY.json reserve one direct harness for each proposed module plus shared contracts for Kiwify, Instagram, Meta, ebook preflight, attribution economics, budget safety, workflow replay and source/rights traceability. These 28 product/shared entries are planned only and have no executable commands until architecture and runner are approved. Their proposed bounded targets are 10 minutes for component/platform proof and 15 minutes for external/workflow proof; the validated T0 remains 5 minutes. No product or live-account tests are claimed.

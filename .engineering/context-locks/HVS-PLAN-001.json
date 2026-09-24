@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "work_order_id": "HVS-PLAN-001",
+  "repository": "KayzenRoot/hive-studio",
+  "base": {
+    "branch": "main",
+    "commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+  },
+  "candidate_branch": "planning/hvs-plan-001-module-map",
+  "candidate_head": null,
+  "critical_sources": [
+    {
+      "path": ".engineering/CHECKPOINT.md",
+      "git_blob_sha": "2e0cac9262d59d7f4ea1d1bf7909a2ad897bfbcc",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/DECISIONS-LEDGER.md",
+      "git_blob_sha": "75f3f0860aeb68051f24fd5c2ccb3482d17b0d33",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/SCOPE.md",
+      "git_blob_sha": "ab96955036c0a5fd983d95d644a8469f55350a70",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/DEFINITION-OF-DONE.md",
+      "git_blob_sha": "d88254dbfab83a5faa3bf8b9779fe9c1605d1c9c",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/ARCHITECTURE.md",
+      "git_blob_sha": "5fea67a091bd56b4b060be4ff02f6927aca64c5a",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/REQUIREMENTS.md",
+      "git_blob_sha": "29481c8d6ad19f3aeccde794d578c7016f6ce132",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/HARNESS-ARCHITECTURE.md",
+      "git_blob_sha": "b4676b91cafb3b274015ab48411f416de8a03c11",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/HARNESS-REGISTRY.json",
+      "git_blob_sha": "86f79ef3390c46241ac4e4a60154610053dd3ba1",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/TEST-BENCHMARK-PLAN.md",
+      "git_blob_sha": "05fffe93e8ea352f55668a6e3cff9c4763b7d617",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/BACKLOG.md",
+      "git_blob_sha": "a2e2ded103369608dabd0bc3f87aab76d06bcb7d",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/PROJECT-OVERVIEW.md",
+      "git_blob_sha": "bb5c9f0c5eb34d7d5041302746ec6d7154aa878f",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/SOURCE-HIERARCHY.md",
+      "git_blob_sha": "dc0d01102ec700e1b374aeea59758e0f422cb5d9",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/SECURITY.md",
+      "git_blob_sha": "2c5dd9155f16d681cb86d56f31a9e16567d85315",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".engineering/DEPLOYMENT.md",
+      "git_blob_sha": "76b7063263d61752f503bd7956259a0533832d37",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": "AGENTS.md",
+      "git_blob_sha": "5941e6a605b2ca202b6ccc3727e1f30782b717a2",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "git_blob_sha": "dc765ea628d83a11e2cd15c9a2f5c4be95a7ace1",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": "docs/CODEX-PROMPT-AND-EXECUTION.md",
+      "git_blob_sha": "1fb161ddfcdd63b064e9d140f82ea1c6fd0a97a3",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    },
+    {
+      "path": "scripts/verify-foundation.mjs",
+      "git_blob_sha": "def1cb4b4f8b836713ee9ea4bd4d6938f4f0ad46",
+      "read_from_commit": "7c7ffde53a0d6cb89011ff5cf4a5198371085018"
+    }
+  ],
+  "stale_if": [
+    "main changes from the locked base before integration",
+    "a higher-authority requirement or approved decision changes",
+    "an official API contract, permission model or integration pin changes"
+  ]
+}

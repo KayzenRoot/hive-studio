@@ -84,11 +84,43 @@ for (const path of [
   ".engineering/CHECKPOINT-PROTOCOL.md",
   ".engineering/WORK-ORDERS/HVS-GOV-001.md",
   ".engineering/context-locks/HVS-GOV-001.json",
+  ".engineering/MODULE-CATALOG.md",
+  ".engineering/MODULE-MAP.json",
+  ".engineering/WORK-ORDERS/HVS-PLAN-001.md",
+  ".engineering/context-locks/HVS-PLAN-001.json",
+  ".engineering/checkpoints/CP-HVS-PLAN-001-001.md",
 ]) requireFile(path);
 
+const moduleMapText = requireFile(".engineering/MODULE-MAP.json");
 const harnessText = requireFile(".engineering/HARNESS-REGISTRY.json");
+let moduleMap = {};
+let registry = {};
 try {
-  const registry = JSON.parse(harnessText);
+  moduleMap = JSON.parse(moduleMapText);
+  if (!Array.isArray(moduleMap.modules) || moduleMap.modules.length !== 20) {
+    errors.push("Candidate module map must contain exactly 20 logical modules.");
+  }
+  const moduleIds = new Set();
+  for (const module of moduleMap.modules ?? []) {
+    if (!/^MOD-\d{2}$/.test(module.id ?? "") || moduleIds.has(module.id)) {
+      errors.push("Module map contains an invalid or duplicate module ID.");
+    }
+    moduleIds.add(module.id);
+    if (!module.name || !module.group || !module.purpose || !Array.isArray(module.depends_on) || !Array.isArray(module.harness_ids) || module.harness_ids.length === 0) {
+      errors.push("Module map entry is missing boundary/dependency/harness fields: " + (module.id || "unknown"));
+    }
+  }
+  for (const module of moduleMap.modules ?? []) {
+    for (const dependency of module.depends_on ?? []) {
+      if (!moduleIds.has(dependency)) errors.push("Module map references an unknown module dependency: " + dependency);
+    }
+  }
+  if (!Array.isArray(moduleMap.shared_harnesses)) errors.push("Module map shared_harnesses must be an array.");
+} catch {
+  errors.push("Module map is not valid JSON.");
+}
+try {
+  registry = JSON.parse(harnessText);
   if (!Array.isArray(registry.entries)) errors.push("Harness registry entries must be an array.");
   const ids = new Set();
   for (const entry of registry.entries ?? []) {
@@ -96,11 +128,20 @@ try {
       errors.push("Harness registry contains an invalid or duplicate ID.");
     }
     ids.add(entry.id);
-    if (!entry.owner || !entry.layer || !entry.command || !entry.purpose || !entry.fixture_strategy || !entry.isolation || !entry.cleanup || !entry.evidence) {
-      errors.push("Harness registry entry is missing required ownership/command/isolation/evidence fields: " + (entry.id || "unknown"));
+    if (!entry.owner || !entry.layer || !entry.status || !entry.purpose || !entry.fixture_strategy || !entry.isolation || !entry.cleanup || !entry.evidence) {
+      errors.push("Harness registry entry is missing required ownership/isolation/evidence fields: " + (entry.id || "unknown"));
     }
     if (!Array.isArray(entry.triggers) || entry.triggers.length === 0 || !Array.isArray(entry.dependencies)) {
       errors.push("Harness registry entry must declare triggers and dependency links: " + (entry.id || "unknown"));
+    }
+    if (entry.status === "implemented" && (typeof entry.command !== "string" || entry.command.length === 0)) {
+      errors.push("Implemented harness must have a concrete command: " + (entry.id || "unknown"));
+    }
+    if (entry.status === "planned" && entry.command !== null) {
+      errors.push("Planned harness must have a null command: " + (entry.id || "unknown"));
+    }
+    if (!["implemented", "planned"].includes(entry.status)) {
+      errors.push("Harness status must be implemented or planned: " + (entry.id || "unknown"));
     }
     for (const field of ["requires_services", "external_network", "production_data", "external_side_effects"]) {
       if (typeof entry[field] !== "boolean") errors.push("Harness registry policy must explicitly set " + field + ": " + (entry.id || "unknown"));
@@ -109,9 +150,29 @@ try {
       errors.push("Harness timeout must be a positive integer no greater than 45 minutes: " + (entry.id || "unknown"));
     }
   }
-  const foundation = registry.entries?.find((entry) => entry.id === "HAR-FOUNDATION-T0");
-  if (!foundation || foundation.command !== "node scripts/verify-foundation.mjs" || foundation.timeout_seconds !== 300) {
-    errors.push("Foundation harness HAR-FOUNDATION-T0 is missing or has an unexpected command/budget.");
+  for (const entry of registry.entries ?? []) {
+    for (const dependency of entry.dependencies ?? []) {
+      if (!ids.has(dependency)) errors.push("Harness references an unknown harness dependency: " + dependency);
+    }
+  }
+  const byId = new Map((registry.entries ?? []).map((entry) => [entry.id, entry]));
+  const foundation = byId.get("HAR-FOUNDATION-T0");
+  if (!foundation || foundation.status !== "implemented" || foundation.command !== "node scripts/verify-foundation.mjs" || foundation.timeout_seconds !== 300) {
+    errors.push("Foundation harness HAR-FOUNDATION-T0 is missing or has an unexpected status/command/budget.");
+  }
+  for (const module of moduleMap.modules ?? []) {
+    for (const harnessId of module.harness_ids ?? []) {
+      const entry = byId.get(harnessId);
+      if (!entry || entry.status !== "planned" || entry.owner !== module.id) {
+        errors.push("Each module must map to a planned owned harness: " + module.id);
+      }
+    }
+  }
+  for (const harness of moduleMap.shared_harnesses ?? []) {
+    const entry = byId.get(harness.id);
+    if (!entry || entry.status !== "planned" || entry.owner !== "shared") {
+      errors.push("Each shared module harness must exist as a planned shared registry entry: " + harness.id);
+    }
   }
 } catch {
   errors.push("Harness registry is not valid JSON.");

@@ -14,4 +14,11 @@ Status: `DRAFT — PRODUCT DECISIONS REMAIN OPEN`
 | D-008 | Every product module uses registered, isolated, problem-focused harnesses selected by impact/dependency closure; no all-suite default. | APPROVED | Explicit user direction; harness tooling and module map remain for HVS-PLAN-001. |
 | D-009 | Every Hive Studio project response records a durable checkpoint event in GitHub; the canonical checkpoint is a concise current-state pointer and is promoted only after exact-head audit. | APPROVED | Explicit user direction; follow `.engineering/CHECKPOINT-PROTOCOL.md`. |
 
+| D-010 | Use the 20-module map, three product/platform groups and cross-module Operator Control Center shell as the proposed logical boundary for complete planning. | PROPOSED | Candidate only in MODULE-CATALOG.md and MODULE-MAP.json; full Source Pack and user approval still pending. |
+| D-011 | Gate every connector action by an evidenced API capability and permission state; preserve assisted-only behavior where write support is not verified. | PROPOSED | Capability matrix and cited public API evidence are in MODULE-CATALOG.md; each provider still requires versioned contract tests. |
+| D-012 | Provide policy-bounded autonomy modes, with server-enforced budget limits and fail-closed pause/reconciliation before financial actions. | PROPOSED | Consistent with the complete-automation goal and SECURITY.md; exact modes and caps remain open. |
+
+Amendment to D-008: the HVS-PLAN-001 candidate now maps each proposed module to a planned harness ID. Those entries are design-only, non-runnable and do not count as test evidence.
+
 Record future decisions as ADRs with context, options, consequences, status and supersession links. Do not rewrite approved history; append amendments.
+

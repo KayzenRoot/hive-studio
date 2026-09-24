@@ -9,6 +9,8 @@ Status: `DRAFT — PRODUCT PLANNING NOT COMPLETE`
 - `DIR-004`: External ad spend must be controllable by explicit operator-set limits and an emergency pause before autonomous execution is enabled.
 - `DIR-005`: Every product module must have registered, isolated, deterministic harnesses, with tests selected by changed-module/dependency impact rather than running the entire suite on every task.
 - `DIR-006`: Every Hive Studio project response must persist a concise checkpoint event in GitHub so work can resume from repository evidence rather than chat memory.
+- `DIR-007`: E-books should be editorially strong and professionally composed, with relevant original/cleared visuals, transparent sourcing, accessible structure, PDF/EPUB candidate exports and rendered-page quality review; exact acceptance thresholds remain to be set.
+- `DIR-008`: The platform should help improve sales through demand evidence, clear offers, high-quality pages/content and bounded experimentation measured against real net economics; it must not promise sales or infer profit from clicks alone.
 
 ## Open requirements
 - Personas, product types, supported languages and accessibility.
@@ -21,3 +23,8 @@ Status: `DRAFT — PRODUCT PLANNING NOT COMPLETE`
 - Runtime/deployment targets, cost limits, quality metrics and full release acceptance.
 
 Each open item requires an explicit requirement ID, source, priority classification and testable acceptance criteria before implementation.
+
+
+## Candidate module map
+
+HVS-PLAN-001 records 20 proposed modules and maps each to planned harness IDs in MODULE-CATALOG.md and MODULE-MAP.json. This is a discovery artifact, not final acceptance criteria or authority to implement product code.

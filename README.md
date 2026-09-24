@@ -4,9 +4,9 @@ A complete platform for creating and operating digital products and their market
 
 ## Current status
 
-- Foundation setup is approved; product implementation remains blocked until `HVS-PLAN-001` freezes the full Source Pack.
+- Foundation setup is approved; HVS-PLAN-001 is active. A candidate 20-module map is in `.engineering/MODULE-CATALOG.md` and `.engineering/MODULE-MAP.json`; product implementation remains blocked until the full Source Pack is approved.
 - No product application code, external API writes, social publishing, or advertising spend has been implemented.
-- Canonical planning starts from `.engineering/CHECKPOINT.md` and `.engineering/SOURCE-HIERARCHY.md`.
+- Canonical planning starts from `.engineering/CHECKPOINT.md`, `.engineering/SOURCE-HIERARCHY.md` and the active Work Order.
 
 ## Pinned engineering integrations
 
@@ -31,6 +31,7 @@ npm run validate
 npm audit --audit-level=high
 ```
 
-See [GEF setup](docs/GEF-BOOTSTRAP.md), [HIVE setup](docs/HIVE-INTEGRATION.md), [Codex execution contract](docs/CODEX-PROMPT-AND-EXECUTION.md), [harness architecture](.engineering/HARNESS-ARCHITECTURE.md), and the [checkpoint protocol](.engineering/CHECKPOINT-PROTOCOL.md). Canonical sources are under `.engineering/`.
+See [GEF setup](docs/GEF-BOOTSTRAP.md), [HIVE setup](docs/HIVE-INTEGRATION.md), [Codex execution contract](docs/CODEX-PROMPT-AND-EXECUTION.md), [harness architecture](.engineering/HARNESS-ARCHITECTURE.md), the [checkpoint protocol](.engineering/CHECKPOINT-PROTOCOL.md), and the [candidate module catalog](.engineering/MODULE-CATALOG.md). Product harness entries marked planned are not runnable. Canonical sources are under `.engineering/`.
 
 Advertising and financial side effects remain disabled until planning defines verified hard caps, authorization, monitoring, and an emergency stop.
+
