@@ -46,15 +46,17 @@ No direct main mutations beyond the minimum empty-repository seed required to cr
 2. Recursive checkout exposes Hive `VERSION=1.0.3` and GEF package version `1.0.0`.
 3. Source-pack starter documents correctly label open product decisions as draft.
 4. Codex instructions include the required Work Order fields, context locking, scope control and exact-head evidence handoff.
-5. T0 validator passes without dependencies/network/services; mandatory CI has a 5-minute timeout.
-6. GEF full validation is isolated to a 30-minute bounded job, not run on routine product changes.
-7. No product source, secret, external mutation or unsupported integration claim is introduced.
-8. Exact-head diff and CI are reviewed; checkpoint remains proposed until audit.
+5. T0 validator passes from the parent Git tree without dependencies, network calls or submodule downloads; mandatory CI has a 5-minute timeout.
+6. Pin-change validation confirms checked-out GEF/HIVE source SHAs and versions within 10 minutes; GEF's full workspace validation remains separately capped at 30 minutes.
+7. GEF full validation is isolated to a 30-minute bounded job, not run on routine product changes.
+8. No product source, secret, external mutation or unsupported integration claim is introduced.
+9. Exact-head diff and CI are reviewed; checkpoint remains proposed until audit.
 
 ## TESTS
 - Run `node scripts/verify-foundation.mjs` on the exact candidate.
-- Confirm the GitHub Fast Gate passes for the PR head.
-- Confirm GEF full validation is defined and bounded; run only if the GEF submodule itself changes or via explicit workflow dispatch.
+- Confirm the GitHub Fast Gate passes without initializing submodules.
+- Confirm the integration source-version gate passes on submodule pointer changes.
+- Confirm GEF full validation is bounded; run only if the GEF pointer changes or via explicit workflow dispatch.
 - Inspect `.gitmodules`, integration SHAs, draft labels and absence of secret files.
 - Do not claim Docker/HIVE runtime health: no local Docker runtime test is part of this increment.
 

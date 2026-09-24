@@ -18,7 +18,7 @@ Use an incremental prompt containing the Work Order and relevant deltas/paths, n
 ANALYZE → SOURCE CHECK → WORK ORDER → CONTEXT LOCK → PREFLIGHT → EXECUTE → TARGETED TESTS/EVIDENCE → PR → EXACT-HEAD AUDIT → CHECKPOINT DELTA → MERGE → NEXT.
 
 - Preserve existing files and unrelated user work. Make only admitted changes on the named branch.
-- Run the fastest deterministic checks first; add only tests implicated by the change.
+- Run the fastest deterministic checks first; add only tests implicated by the change. The T0 gate reads Git tree links without downloading submodules; source/version and full GEF jobs run only when their relevant submodule pointer changes.
 - Each command and job needs a timeout. On a failure, capture the first useful error, diagnose its cause, fix the smallest affected surface, then rerun that proof. Do not loop blindly or silently extend a timeout.
 - Report base/head SHA, files, decisions, tests with duration/result, omitted checks and reasons, security/architecture risks, evidence and proposed checkpoint delta.
 - A green CI is not full acceptance; audit the exact head against Scope, Architecture, Requirements, acceptance criteria and DoD. Do not promote the checkpoint yourself.

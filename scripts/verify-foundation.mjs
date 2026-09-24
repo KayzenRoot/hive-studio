@@ -4,10 +4,6 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const expected = new Map([
-  ["integrations/gef-bootstrap", "866fe3af8cccc65c929aaf6a47a924401fa448b3"],
-  ["integrations/hive", "52bd3dab54dd4f16264072e198ed1fc23168f7fa"],
-]);
 const errors = [];
 const requireFile = (path) => {
   try {
@@ -18,60 +14,55 @@ const requireFile = (path) => {
   }
 };
 
+let pins;
+try {
+  pins = JSON.parse(requireFile(".engineering/integrations/INTEGRATION-PINS.json"));
+} catch {
+  errors.push("Integration pin manifest is not valid JSON.");
+  pins = {};
+}
+const integrations = [
+  { key: "gef_bootstrap", path: "integrations/gef-bootstrap", url: "https://github.com/KayzenRoot/gef-bootstrap.git" },
+  { key: "hive", path: "integrations/hive", url: "https://github.com/KayzenRoot/hive.git" },
+];
 const modules = requireFile(".gitmodules");
-for (const [path, url] of [
-  ["integrations/gef-bootstrap", "https://github.com/KayzenRoot/gef-bootstrap.git"],
-  ["integrations/hive", "https://github.com/KayzenRoot/hive.git"],
-]) {
-  if (!modules.includes("path = " + path) || !modules.includes("url = " + url)) {
-    errors.push("Unexpected or missing submodule declaration: " + path);
+for (const integration of integrations) {
+  const pin = pins.integrations?.[integration.key];
+  if (!modules.includes("path = " + integration.path) || !modules.includes("url = " + integration.url)) {
+    errors.push("Unexpected or missing submodule declaration: " + integration.path);
+  }
+  if (!pin || pin.path !== integration.path || !/^v\d+\.\d+\.\d+$/.test(pin.ref ?? "") || !/^[0-9a-f]{40}$/.test(pin.commit ?? "")) {
+    errors.push("Invalid or missing immutable version pin: " + integration.path);
   }
 }
+if (!pins.integrations?.hive?.known_upstream_documentation_mismatch) {
+  errors.push("HIVE release-document mismatch must remain visible.");
+}
 
-const status = spawnSync("git", ["submodule", "status", "--recursive"], {
+const paths = integrations.map(({ path }) => path);
+const tree = spawnSync("git", ["ls-tree", "HEAD", "--", ...paths], {
   cwd: root,
   encoding: "utf8",
   timeout: 5000,
   windowsHide: true,
 });
-if (status.error || status.status !== 0) {
-  errors.push("git submodule status failed; initialize with --recurse-submodules.");
+if (tree.error || tree.status !== 0) {
+  errors.push("Could not read submodule gitlinks from HEAD.");
 } else {
-  const lines = status.stdout.split(/\r?\n/);
-  for (const [path, sha] of expected) {
-    const line = lines.find((entry) => {
-      const candidate = entry.match(/^([ +\-]?)([0-9a-f]{40})\s+(\S+)/);
-      return candidate?.[3] === path;
-    });
-    const match = line?.match(/^([ +\-]?)([0-9a-f]{40})\s+(\S+)/);
-    if (!match) {
-      errors.push("Submodule is not initialized: " + path);
-    } else {
-      if (match[1] !== " ") errors.push("Submodule checkout is not at its recorded gitlink: " + path);
-      if (match[2] !== sha) errors.push("Submodule commit does not match the approved pin: " + path);
+  const actual = new Map();
+  for (const line of tree.stdout.split(/\r?\n/)) {
+    const match = line.match(/^([0-7]{6})\s+(\w+)\s+([0-9a-f]{40})\t(.+)$/);
+    if (match) actual.set(match[4], { mode: match[1], type: match[2], commit: match[3] });
+  }
+  for (const integration of integrations) {
+    const pin = pins.integrations?.[integration.key];
+    const entry = actual.get(integration.path);
+    if (!entry || entry.mode !== "160000" || entry.type !== "commit") {
+      errors.push("Git tree is missing an exact submodule link: " + integration.path);
+    } else if (pin?.commit !== entry.commit) {
+      errors.push("Git tree link does not match the approved manifest pin: " + integration.path);
     }
   }
-}
-
-const hiveVersion = requireFile("integrations/hive/VERSION").trim();
-if (hiveVersion !== "1.0.3") errors.push("HIVE VERSION must be 1.0.3; found " + (hiveVersion || "missing"));
-
-try {
-  const gef = JSON.parse(requireFile("integrations/gef-bootstrap/package.json"));
-  if (gef.version !== "1.0.0") errors.push("GEF workspace package version must be 1.0.0.");
-  if (gef.private !== true) errors.push("GEF workspace privacy boundary changed; review before use.");
-} catch {
-  errors.push("GEF package.json is not valid JSON.");
-}
-
-const manifest = requireFile(".engineering/integrations/INTEGRATION-PINS.json");
-try {
-  const pins = JSON.parse(manifest);
-  if (pins.integrations?.hive?.commit !== expected.get("integrations/hive")) errors.push("HIVE pin manifest mismatch.");
-  if (pins.integrations?.gef_bootstrap?.commit !== expected.get("integrations/gef-bootstrap")) errors.push("GEF pin manifest mismatch.");
-  if (!pins.integrations?.hive?.known_upstream_documentation_mismatch) errors.push("HIVE release-document mismatch must remain visible.");
-} catch {
-  errors.push("Integration pin manifest is not valid JSON.");
 }
 
 for (const path of [
@@ -95,5 +86,5 @@ if (errors.length) {
   for (const error of errors) console.error("FAIL: " + error);
   process.exitCode = 1;
 } else {
-  console.log("PASS: Source Pack, exact GEF/HIVE submodule pins, release caveat and versions verified.");
+  console.log("PASS: Source Pack, manifest and exact submodule gitlinks verified without submodule checkout.");
 }

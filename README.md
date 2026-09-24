@@ -16,7 +16,7 @@ A complete platform for creating and operating digital products and their market
 
 ## Verify the foundation
 
-Requires Git and Node.js 22 or newer:
+Requires Git and Node.js 22 or newer. This fast check reads the recorded Git submodule pointers and does not download submodule contents:
 
 ```sh
 node scripts/verify-foundation.mjs
