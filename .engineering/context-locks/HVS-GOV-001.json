@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "work_order_id": "HVS-GOV-001",
+  "repository": "KayzenRoot/hive-studio",
+  "base": {
+    "branch": "main",
+    "commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+  },
+  "candidate_branch": "foundation/hvs-gov-001-harness-checkpoint",
+  "candidate_head": null,
+  "critical_sources": [
+    {
+      "path": ".engineering/CHECKPOINT.md",
+      "git_blob_sha": "56e61de731abd94faf303fafbce98167d3416d9d",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/DECISIONS-LEDGER.md",
+      "git_blob_sha": "3c82e7934da4c0102bcbd471eb048391520447e8",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/SCOPE.md",
+      "git_blob_sha": "ce06aa48c4d66ecdcdc3e3982aede33eb6949985",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/DEFINITION-OF-DONE.md",
+      "git_blob_sha": "85ee12c8acb141b565c675e382ed748309ad6a45",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/ARCHITECTURE.md",
+      "git_blob_sha": "dd30ff65e6f59056c66b892efef7bc9bad8c5a6f",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/REQUIREMENTS.md",
+      "git_blob_sha": "9ae1207a0e050925a65f9c6c5010ef7f94a03f0d",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/TEST-BENCHMARK-PLAN.md",
+      "git_blob_sha": "8ffb093e02d58f6fe9db6eb7f52c52ac177a803c",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/BACKLOG.md",
+      "git_blob_sha": "4e459322823aba15ad788909a3402c50b26f00b9",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/SOURCE-HIERARCHY.md",
+      "git_blob_sha": "d24c12fb18aefc09c3db38ba66235a2feae3c123",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": "AGENTS.md",
+      "git_blob_sha": "82d196901bfa8dc0ae97ed8884f130fa67160099",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".github/copilot-instructions.md",
+      "git_blob_sha": "9e88d236d2ecdbd460898c37fecbbc6dd0209998",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": "docs/CODEX-PROMPT-AND-EXECUTION.md",
+      "git_blob_sha": "46ece2dc16029ec0b2bb1ee26068e65e8d3daf4c",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": "scripts/verify-foundation.mjs",
+      "git_blob_sha": "6e3772249e95e53ff0182ea4f0d70dfb5246f329",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "path": ".engineering/integrations/INTEGRATION-PINS.json",
+      "git_blob_sha": "de11a2298d0aed9159c9885dee11500e7ce8398c",
+      "read_from_commit": "fc43d93e219b4266a6d1c2b4745284fdbc1b98e0"
+    },
+    {
+      "repository": "KayzenRoot/gef-bootstrap",
+      "ref": "v1.0.0",
+      "commit": "866fe3af8cccc65c929aaf6a47a924401fa448b3"
+    },
+    {
+      "repository": "KayzenRoot/hive",
+      "ref": "v1.0.3",
+      "commit": "52bd3dab54dd4f16264072e198ed1fc23168f7fa"
+    }
+  ],
+  "stale_if": [
+    "main changes from the locked base before integration",
+    "a canonical source or approved decision changes",
+    "a pinned integration identity changes"
+  ]
+}

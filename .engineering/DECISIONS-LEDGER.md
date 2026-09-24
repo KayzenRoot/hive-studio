@@ -11,5 +11,7 @@ Status: `DRAFT — PRODUCT DECISIONS REMAIN OPEN`
 | D-005 | Keep HIVE as local development support only until a separate ADR decides whether product runtime depends on it. | APPROVED | Avoids silently coupling the product to a developer tool. |
 | D-006 | PR validation is impact-based, has hard timeouts, and avoids running full dependency suites on every prompt. | APPROVED | User requested short, objective tests without loss of quality; exact tiers are in TEST-BENCHMARK-PLAN.md. |
 | D-007 | No external ad spend or financial mutation is enabled by default; exact caps and controls must be approved before implementation. | PROPOSED | Safety constraint; detailed product rules remain open. |
+| D-008 | Every product module uses registered, isolated, problem-focused harnesses selected by impact/dependency closure; no all-suite default. | APPROVED | Explicit user direction; harness tooling and module map remain for HVS-PLAN-001. |
+| D-009 | Every Hive Studio project response records a durable checkpoint event in GitHub; the canonical checkpoint is a concise current-state pointer and is promoted only after exact-head audit. | APPROVED | Explicit user direction; follow `.engineering/CHECKPOINT-PROTOCOL.md`. |
 
 Record future decisions as ADRs with context, options, consequences, status and supersession links. Do not rewrite approved history; append amendments.

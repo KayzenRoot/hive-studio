@@ -7,6 +7,8 @@ Status: `DRAFT — PRODUCT PLANNING NOT COMPLETE`
 - `DIR-002`: A single operator action should eventually be able to initiate a digital-product workflow, with autonomous work bounded by operator policies.
 - `DIR-003`: The intended domain includes digital-product creation, document design/export, sales presence, Instagram content, paid campaigns, analytics and budget control. Exact functions and acceptance criteria are not yet approved.
 - `DIR-004`: External ad spend must be controllable by explicit operator-set limits and an emergency pause before autonomous execution is enabled.
+- `DIR-005`: Every product module must have registered, isolated, deterministic harnesses, with tests selected by changed-module/dependency impact rather than running the entire suite on every task.
+- `DIR-006`: Every Hive Studio project response must persist a concise checkpoint event in GitHub so work can resume from repository evidence rather than chat memory.
 
 ## Open requirements
 - Personas, product types, supported languages and accessibility.

@@ -31,6 +31,6 @@ npm run validate
 npm audit --audit-level=high
 ```
 
-See [GEF setup](docs/GEF-BOOTSTRAP.md), [HIVE setup](docs/HIVE-INTEGRATION.md), [Codex execution contract](docs/CODEX-PROMPT-AND-EXECUTION.md), and the canonical source pack under `.engineering/`.
+See [GEF setup](docs/GEF-BOOTSTRAP.md), [HIVE setup](docs/HIVE-INTEGRATION.md), [Codex execution contract](docs/CODEX-PROMPT-AND-EXECUTION.md), [harness architecture](.engineering/HARNESS-ARCHITECTURE.md), and the [checkpoint protocol](.engineering/CHECKPOINT-PROTOCOL.md). Canonical sources are under `.engineering/`.
 
 Advertising and financial side effects remain disabled until planning defines verified hard caps, authorization, monitoring, and an emergency stop.

@@ -3,7 +3,7 @@
 Status: `DRAFT — PRIORITIES PENDING PRODUCT PLANNING`
 
 ## Next necessary increment
-- `HVS-PLAN-001`: Complete product discovery and canonical Source Pack for the full platform. Resolve product modules, operators/users, commerce and Meta contracts, security and spending controls, architecture, test evidence, deployment, cost model and complete Definition of Done. No product code in this increment.
+- `HVS-PLAN-001`: Complete product discovery and canonical Source Pack for the full platform. Resolve product modules, operators/users, commerce and Meta contracts, security and spending controls, architecture, test evidence, deployment, cost model and complete Definition of Done. Define module boundaries, registry entries, isolation strategy and acceptance-to-harness map. No product code in this increment.
 
 ## Foundation follow-ups
 - `HVS-BOOT-001`: Complete — GEF/HIVE pins, source/version contracts, bounded CI and Codex governance installed and audited.

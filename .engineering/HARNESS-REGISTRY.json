@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "FOUNDATION_ONLY",
+  "authority": ".engineering/HARNESS-ARCHITECTURE.md",
+  "product_module_map": "pending HVS-PLAN-001",
+  "entries": [
+    {
+      "id": "HAR-FOUNDATION-T0",
+      "owner": "foundation",
+      "layer": "foundation",
+      "purpose": "Validate canonical foundation documents, integration pins and repository contracts.",
+      "command": "node scripts/verify-foundation.mjs",
+      "triggers": ["every pull request", "push to main"],
+      "timeout_seconds": 300,
+      "dependencies": [],
+      "fixture_strategy": "No product fixture; deterministic Git tree and repository-document checks.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Read-only repository inspection; no Docker, submodule download or external API call.",
+      "cleanup": "No runtime resources are created.",
+      "evidence": "GitHub Actions / Foundation Fast Gate"
+    }
+  ]
+}
