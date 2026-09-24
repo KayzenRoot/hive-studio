@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE",
+  "authority": ".engineering/MODULE-CATALOG.md",
+  "work_order_id": "HVS-PLAN-001",
+  "note": "Logical boundaries and harness IDs are proposed. This map is not an approved full Source Pack, software architecture, deployment design or authorization for product implementation.",
+  "modules": [
+    {
+      "id": "MOD-01",
+      "name": "Workspace & Product Portfolio",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Workspaces, products, briefs, versions, lifecycle states and the single create-product entry point.",
+      "deps": [],
+      "req": [
+        "DIR-002",
+        "DIR-003"
+      ],
+      "harness_ids": [
+        "HAR-MOD-01"
+      ],
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-003"
+      ]
+    },
+    {
+      "id": "MOD-02",
+      "name": "Market & Demand Intelligence",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Evidence-led niche and audience research, demand signals, source freshness, confidence and competitor observations.",
+      "deps": [
+        "MOD-01"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-007",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-02"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-03",
+      "name": "Audience, Positioning & Offer Strategy",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Audience outcomes, positioning, offer structure, pricing hypotheses, and optional main-offer, order-bump and upsell ladder.",
+      "deps": [
+        "MOD-01",
+        "MOD-02"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-03"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-04",
+      "name": "Research, Evidence & Rights Ledger",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Source provenance, citations, claim-to-source links, licensing, permissions, freshness and asset origins.",
+      "deps": [
+        "MOD-01",
+        "MOD-02"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-04"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-05",
+      "name": "Editorial Studio",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Structured outline and manuscript drafting, chapter editing, voice consistency, versions and review notes.",
+      "deps": [
+        "MOD-03",
+        "MOD-04"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-05"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-06",
+      "name": "Content Quality & Trust",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Fact, consistency, originality, completeness, readability and policy checks; route risky claims to qualified human review.",
+      "deps": [
+        "MOD-04",
+        "MOD-05"
+      ],
+      "req": [
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-06"
+      ],
+      "acceptance_coverage": [
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-07",
+      "name": "Brand & Visual Studio",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Art direction, covers, purposeful illustrations, diagrams, charts, captions, alt text and provenance-aware asset creation.",
+      "deps": [
+        "MOD-04"
+      ],
+      "req": [
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-07"
+      ],
+      "acceptance_coverage": [
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-08",
+      "name": "E-book Composition & Export",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Compile structured content into polished digital and print-ready layouts; candidate outputs include accessible PDF and reflowable EPUB with rendered-page preflight.",
+      "deps": [
+        "MOD-05",
+        "MOD-06",
+        "MOD-07",
+        "MOD-09"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-08"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-09",
+      "name": "Digital Asset Vault & Versioning",
+      "group": "Product Factory",
+      "scope": "NECESSARY",
+      "purpose": "Versioned manuscripts, exports, images and creatives with checksums, licenses, prompts, lineage and rollback.",
+      "deps": [
+        "MOD-01",
+        "MOD-04",
+        "MOD-07"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "harness_ids": [
+        "HAR-MOD-09"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "MOD-10",
+      "name": "Sales Page & Conversion Studio",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Truthful mobile-first offer pages, copy and creative variants, accessibility/performance checks and controlled experiments.",
+      "deps": [
+        "MOD-03",
+        "MOD-06",
+        "MOD-08"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-10"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-11",
+      "name": "Commerce, Checkout & Fulfilment",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Capability-gated commerce adapters for product/checkout actions, purchase/refund events, entitlement and delivery handoff.",
+      "deps": [
+        "MOD-10",
+        "MOD-18",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-003"
+      ],
+      "harness_ids": [
+        "HAR-MOD-11"
+      ],
+      "acceptance_coverage": [
+        "DIR-003"
+      ]
+    },
+    {
+      "id": "MOD-12",
+      "name": "Customer Lifecycle & CRM",
+      "group": "Growth & Revenue",
+      "scope": "IMPORTANT",
+      "purpose": "Consent-aware onboarding, support, feedback, refund insight and relevant next-product journeys.",
+      "deps": [
+        "MOD-11",
+        "MOD-16",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-12"
+      ],
+      "acceptance_coverage": [
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-13",
+      "name": "Instagram Profile & Organic Studio",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Profile strategy, content calendar, captions, carousels/reels/story assets and only officially supported publishing operations.",
+      "deps": [
+        "MOD-03",
+        "MOD-07",
+        "MOD-08",
+        "MOD-18",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-13"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-14",
+      "name": "Paid Campaign Studio",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Meta campaign planning, audience/creative variants, preview, launch, measurement and pause through explicit account capabilities and spend policy.",
+      "deps": [
+        "MOD-03",
+        "MOD-10",
+        "MOD-15",
+        "MOD-18",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-004",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-14"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-15",
+      "name": "Autonomy Policy & Spend Guard",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Per-account and per-campaign operating modes, hard budget caps, approval rules, kill switch, idempotency, spend ledger and fail-closed stop behavior.",
+      "deps": [
+        "MOD-18",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-004"
+      ],
+      "harness_ids": [
+        "HAR-MOD-15"
+      ],
+      "acceptance_coverage": [
+        "DIR-004"
+      ]
+    },
+    {
+      "id": "MOD-16",
+      "name": "Attribution, Economics & Growth Experiments",
+      "group": "Growth & Revenue",
+      "scope": "NECESSARY",
+      "purpose": "Join consented funnel, sales, ad cost, fees and refund signals; report uncertainty and optimize for net contribution rather than clicks alone.",
+      "deps": [
+        "MOD-10",
+        "MOD-11",
+        "MOD-14",
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-16"
+      ],
+      "acceptance_coverage": [
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "MOD-17",
+      "name": "Durable Workflow Orchestrator",
+      "group": "Platform Services",
+      "scope": "NECESSARY",
+      "purpose": "Resumable end-to-end workflows with checkpoints, retries, idempotency, approvals, bounded jobs and clear recovery states.",
+      "deps": [
+        "MOD-01",
+        "MOD-15",
+        "MOD-18",
+        "MOD-19",
+        "MOD-20"
+      ],
+      "req": [
+        "DIR-002",
+        "DIR-005",
+        "DIR-006"
+      ],
+      "harness_ids": [
+        "HAR-MOD-17"
+      ],
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-005",
+        "DIR-006"
+      ]
+    },
+    {
+      "id": "MOD-18",
+      "name": "Integration & AI Provider Control Plane",
+      "group": "Platform Services",
+      "scope": "NECESSARY",
+      "purpose": "Capability registry, API/version and permission checks, credential references, quotas, model routing, cost tracking and safe fallbacks.",
+      "deps": [
+        "MOD-19"
+      ],
+      "req": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "harness_ids": [
+        "HAR-MOD-18"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ]
+    },
+    {
+      "id": "MOD-19",
+      "name": "Identity, Privacy, Security & Audit",
+      "group": "Platform Services",
+      "scope": "NECESSARY",
+      "purpose": "Identity, workspace boundaries, least privilege, consent, retention/deletion, secret redaction, revocation and immutable action evidence.",
+      "deps": [],
+      "req": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "harness_ids": [
+        "HAR-MOD-19"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ]
+    },
+    {
+      "id": "MOD-20",
+      "name": "Harness, Simulation & Evaluation Lab",
+      "group": "Platform Services",
+      "scope": "NECESSARY",
+      "purpose": "Harness registry, deterministic fixtures, connector fakes, workflow simulations, e-book quality evaluations and bounded evidence packets.",
+      "deps": [],
+      "req": [
+        "DIR-005",
+        "DIR-006",
+        "DIR-007",
+        "DIR-008"
+      ],
+      "harness_ids": [
+        "HAR-MOD-20"
+      ],
+      "acceptance_coverage": [
+        "DIR-005",
+        "DIR-006",
+        "DIR-007",
+        "DIR-008"
+      ]
+    }
+  ],
+  "shared_harnesses": [
+    {
+      "id": "HAR-CAP-KIWIFY",
+      "purpose": "Verify only documented Kiwify capabilities through deterministic contract fixtures; product-write capability stays assisted until confirmed.",
+      "modules": [
+        "MOD-11"
+      ],
+      "req": [
+        "DIR-003"
+      ]
+    },
+    {
+      "id": "HAR-CAP-INSTAGRAM",
+      "purpose": "Verify professional-account publishing/read capabilities, permission errors and rate/partial-failure handling using fixtures or an authorized sandbox.",
+      "modules": [
+        "MOD-13"
+      ],
+      "req": [
+        "DIR-003"
+      ]
+    },
+    {
+      "id": "HAR-CAP-META",
+      "purpose": "Verify Meta campaign/ad-set budget and insight adapter contracts, permissions, pause and reconciliation using fixtures or an authorized sandbox.",
+      "modules": [
+        "MOD-14",
+        "MOD-15"
+      ],
+      "req": [
+        "DIR-004",
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "HAR-EBOOK-PREFLIGHT",
+      "purpose": "Check generated PDF/EPUB structure and rendered-page quality for overflow, missing assets/fonts, broken links, navigation, legibility and accessibility metadata.",
+      "modules": [
+        "MOD-08"
+      ],
+      "req": [
+        "DIR-007"
+      ]
+    },
+    {
+      "id": "HAR-ATTRIBUTION-MARGIN",
+      "purpose": "Simulate event joins, refunds, fees, attribution uncertainty and contribution-margin decisions with seeded synthetic datasets.",
+      "modules": [
+        "MOD-16"
+      ],
+      "req": [
+        "DIR-008"
+      ]
+    },
+    {
+      "id": "HAR-BUDGET-SAFETY",
+      "purpose": "Prove daily/total cap boundaries, stale-spend data fail-closed behavior, kill switch, idempotency and reconciliation with a fake provider.",
+      "modules": [
+        "MOD-15",
+        "MOD-14"
+      ],
+      "req": [
+        "DIR-004"
+      ]
+    },
+    {
+      "id": "HAR-WORKFLOW-REPLAY",
+      "purpose": "Prove pause/resume, duplicate delivery, retries, checkpoints and recovery across a synthetic product workflow.",
+      "modules": [
+        "MOD-17"
+      ],
+      "req": [
+        "DIR-002",
+        "DIR-005"
+      ]
+    },
+    {
+      "id": "HAR-SOURCE-RIGHTS",
+      "purpose": "Check source/citation completeness, asset license metadata and traceability from claim to rendered product and sales copy.",
+      "modules": [
+        "MOD-04",
+        "MOD-06",
+        "MOD-07",
+        "MOD-08",
+        "MOD-10"
+      ],
+      "req": [
+        "DIR-007"
+      ]
+    }
+  ],
+  "cross_cutting_shell": {
+    "name": "Operator Control Center",
+    "kind": "presentation-layer",
+    "purpose": "Single place to start a product run, review approvals, inspect failures, preview assets, set policy and read economics; contains no duplicated domain rules.",
+    "harnesses": [
+      "HAR-MOD-17",
+      "HAR-MOD-20"
+    ]
+  },
+  "harness_status_legend": {
+    "planned": "Registered design only; not runnable or evidence of implementation.",
+    "implemented": "Command exists and its bounded check has actually run."
+  }
+}

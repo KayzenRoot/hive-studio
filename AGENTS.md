@@ -59,3 +59,6 @@ Each executor handoff reports base/head SHA, changed files, decisions, exact com
 - Update `.engineering/CHECKPOINT.md` as the current concise pointer/status summary. Keep response events append-only; a checkpoint event records state but does not approve its own change.
 - Persist each event through the normal branch → PR → bounded CI → exact-head audit → checkpoint approval → merge flow. If GitHub persistence is unavailable, clearly label the checkpoint unpersisted and do not claim it is in the source of truth.
 - Project responses must end with the checkpoint ID and GitHub evidence link. Unrelated non-project conversations do not create Hive Studio checkpoint noise.
+
+
+During HVS-PLAN-001, read MODULE-CATALOG.md and MODULE-MAP.json as candidate boundaries, then verify every entry against accepted scope and requirements. Planned harnesses in HARNESS-REGISTRY.json have no command and are not executable test evidence. Do not implement product features until the full Source Pack is approved.

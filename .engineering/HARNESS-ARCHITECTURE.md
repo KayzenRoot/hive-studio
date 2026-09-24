@@ -20,7 +20,7 @@ A defect normally starts in one focused harness. If impact analysis shows a shar
 
 `.engineering/HARNESS-REGISTRY.json` is the central index. Every entry must have a stable ID, owner/module, layer, purpose, command, trigger, hard timeout, dependency/impact links, fixture strategy, service/network/side-effect policy, isolation and cleanup instructions, and evidence destination. Work Orders map acceptance criteria and defect classes to registry IDs. The registry itself is validated by the dependency-free T0 gate.
 
-Runner/framework choice, concrete product module boundaries and product entries are intentionally deferred to HVS-PLAN-001. Do not add a test framework or a second production-like deployment solely to create a harness.
+The candidate product module boundaries and planned harness IDs are recorded in MODULE-MAP.json and HARNESS-REGISTRY.json by HVS-PLAN-001. Runner/framework choice and concrete commands remain deferred until the full Source Pack and architecture are approved. Do not add a test framework or a second production-like deployment solely to create a harness.
 
 ## Isolation and reproducibility
 
@@ -39,4 +39,9 @@ A failure packet contains the harness ID, exact command, commit, failing asserti
 
 ## Current foundation entry
 
-`HAR-FOUNDATION-T0` runs `node scripts/verify-foundation.mjs` on each PR with a 5-minute hard timeout. Product harnesses are not yet implemented because the product module map is not yet approved.
+`HAR-FOUNDATION-T0` runs `node scripts/verify-foundation.mjs` on each PR with a 5-minute hard timeout. Only HAR-FOUNDATION-T0 is implemented and runnable. Product/shared entries in the candidate registry are planned design records with command=null; they are not tests, do not pass, and cannot be selected for execution.
+
+
+## Planned-to-runnable lifecycle
+
+The registry supports status implemented or planned. A planned entry must have a null command and explicit implementation gate; it reserves ownership, fixtures, dependencies, isolation, side-effect policy and a hard time budget. Promotion to implemented requires an approved architecture/runner, a real bounded command, validated fixtures, cleanup proof, acceptance mapping and exact-head evidence. Never report a planned harness as passing.

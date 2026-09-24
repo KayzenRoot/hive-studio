@@ -27,3 +27,6 @@ ANALYZE → SOURCE CHECK → WORK ORDER → CONTEXT LOCK → PREFLIGHT → EXECU
 
 ## Test budgets
 The mandatory fast gate is at most 5 minutes. Focused tests target 10 minutes, relevant integration 15 minutes, full regression at most 30 minutes/job, and explicit high-assurance release proofs at most 45 minutes/job. The test plan is canonical; higher-assurance requirements cannot be dropped to meet a budget—split/parallelize them and record all evidence instead.
+
+
+For HVS-PLAN-001, use MODULE-CATALOG.md and MODULE-MAP.json to avoid rediscovering proposed boundaries. Confirm each scope decision against accepted REQUIREMENTS.md and SCOPE.md. Never invent commands for planned harnesses; keep them non-runnable until architecture/runner selection and acceptance mapping are approved.

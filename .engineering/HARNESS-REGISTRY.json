@@ -1,16 +1,21 @@
 {
-  "schema_version": 1,
-  "status": "FOUNDATION_ONLY",
+  "schema_version": 2,
+  "status": "CANDIDATE_PLANNED_NOT_RUN",
   "authority": ".engineering/HARNESS-ARCHITECTURE.md",
-  "product_module_map": "pending HVS-PLAN-001",
+  "product_module_map": ".engineering/MODULE-MAP.json",
+  "runner": "UNSELECTED",
   "entries": [
     {
       "id": "HAR-FOUNDATION-T0",
       "owner": "foundation",
       "layer": "foundation",
+      "status": "implemented",
       "purpose": "Validate canonical foundation documents, integration pins and repository contracts.",
       "command": "node scripts/verify-foundation.mjs",
-      "triggers": ["every pull request", "push to main"],
+      "triggers": [
+        "every pull request",
+        "push to main"
+      ],
       "timeout_seconds": 300,
       "dependencies": [],
       "fixture_strategy": "No product fixture; deterministic Git tree and repository-document checks.",
@@ -20,7 +25,838 @@
       "external_side_effects": false,
       "isolation": "Read-only repository inspection; no Docker, submodule download or external API call.",
       "cleanup": "No runtime resources are created.",
-      "evidence": "GitHub Actions / Foundation Fast Gate"
+      "evidence": "GitHub Actions / Foundation Fast Gate",
+      "acceptance_coverage": [
+        "FOUNDATION"
+      ]
+    },
+    {
+      "id": "HAR-MOD-01",
+      "owner": "MOD-01",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Workspace & Product Portfolio.",
+      "command": null,
+      "triggers": [
+        "when MOD-01 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-003"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-02",
+      "owner": "MOD-02",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Market & Demand Intelligence.",
+      "command": null,
+      "triggers": [
+        "when MOD-02 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-01"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-03",
+      "owner": "MOD-03",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Audience, Positioning & Offer Strategy.",
+      "command": null,
+      "triggers": [
+        "when MOD-03 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-01",
+        "HAR-MOD-02"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-04",
+      "owner": "MOD-04",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Research, Evidence & Rights Ledger.",
+      "command": null,
+      "triggers": [
+        "when MOD-04 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-01",
+        "HAR-MOD-02"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-05",
+      "owner": "MOD-05",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Editorial Studio.",
+      "command": null,
+      "triggers": [
+        "when MOD-05 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-03",
+        "HAR-MOD-04"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-06",
+      "owner": "MOD-06",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Content Quality & Trust.",
+      "command": null,
+      "triggers": [
+        "when MOD-06 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-04",
+        "HAR-MOD-05"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-07",
+      "owner": "MOD-07",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Brand & Visual Studio.",
+      "command": null,
+      "triggers": [
+        "when MOD-07 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-04"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-08",
+      "owner": "MOD-08",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for E-book Composition & Export.",
+      "command": null,
+      "triggers": [
+        "when MOD-08 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-05",
+        "HAR-MOD-06",
+        "HAR-MOD-07",
+        "HAR-MOD-09",
+        "HAR-EBOOK-PREFLIGHT"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-09",
+      "owner": "MOD-09",
+      "layer": "component",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Digital Asset Vault & Versioning.",
+      "command": null,
+      "triggers": [
+        "when MOD-09 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-04",
+        "HAR-MOD-07"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-10",
+      "owner": "MOD-10",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Sales Page & Conversion Studio.",
+      "command": null,
+      "triggers": [
+        "when MOD-10 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-03",
+        "HAR-MOD-06",
+        "HAR-MOD-08"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-11",
+      "owner": "MOD-11",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Commerce, Checkout & Fulfilment.",
+      "command": null,
+      "triggers": [
+        "when MOD-11 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-10",
+        "HAR-CAP-KIWIFY"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-12",
+      "owner": "MOD-12",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Customer Lifecycle & CRM.",
+      "command": null,
+      "triggers": [
+        "when MOD-12 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-11",
+        "HAR-MOD-16"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-13",
+      "owner": "MOD-13",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Instagram Profile & Organic Studio.",
+      "command": null,
+      "triggers": [
+        "when MOD-13 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-07",
+        "HAR-MOD-08",
+        "HAR-CAP-INSTAGRAM"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-14",
+      "owner": "MOD-14",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Paid Campaign Studio.",
+      "command": null,
+      "triggers": [
+        "when MOD-14 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-10",
+        "HAR-MOD-15",
+        "HAR-CAP-META"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-15",
+      "owner": "MOD-15",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Autonomy Policy & Spend Guard.",
+      "command": null,
+      "triggers": [
+        "when MOD-15 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-BUDGET-SAFETY",
+        "HAR-MOD-18",
+        "HAR-MOD-19"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-004"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-16",
+      "owner": "MOD-16",
+      "layer": "workflow",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Attribution, Economics & Growth Experiments.",
+      "command": null,
+      "triggers": [
+        "when MOD-16 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-10",
+        "HAR-MOD-11",
+        "HAR-MOD-14",
+        "HAR-ATTRIBUTION-MARGIN"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-17",
+      "owner": "MOD-17",
+      "layer": "platform",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Durable Workflow Orchestrator.",
+      "command": null,
+      "triggers": [
+        "when MOD-17 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-WORKFLOW-REPLAY",
+        "HAR-MOD-15",
+        "HAR-MOD-18"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-005",
+        "DIR-006"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-18",
+      "owner": "MOD-18",
+      "layer": "platform",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Integration & AI Provider Control Plane.",
+      "command": null,
+      "triggers": [
+        "when MOD-18 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-MOD-19"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-19",
+      "owner": "MOD-19",
+      "layer": "platform",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Identity, Privacy, Security & Audit.",
+      "command": null,
+      "triggers": [
+        "when MOD-19 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-MOD-20",
+      "owner": "MOD-20",
+      "layer": "platform",
+      "status": "planned",
+      "purpose": "Isolated contract/component harness for Harness, Simulation & Evaluation Lab.",
+      "command": null,
+      "triggers": [
+        "when MOD-20 changes",
+        "when mapped acceptance criteria are modified"
+      ],
+      "timeout_seconds": 600,
+      "dependencies": [
+        "HAR-FOUNDATION-T0"
+      ],
+      "fixture_strategy": "Synthetic deterministic fixtures; seeded clock/IDs where needed; disposable isolated state only.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Unit/contract scope for this module; fake external boundaries; no live account, customer data, publication, payment, refund or ad spend.",
+      "cleanup": "Remove the run namespace and generated artifacts; bounded teardown; report any leak.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-005",
+        "DIR-006",
+        "DIR-007",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; concrete runner and module contract selected."
+    },
+    {
+      "id": "HAR-CAP-KIWIFY",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Verify only documented Kiwify capabilities through deterministic contract fixtures; product-write capability stays assisted until confirmed.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-18"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-CAP-INSTAGRAM",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Verify professional-account publishing/read capabilities, permission errors and rate/partial-failure handling using fixtures or an authorized sandbox.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-18"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-003"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-CAP-META",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Verify Meta campaign/ad-set budget and insight adapter contracts, permissions, pause and reconciliation using fixtures or an authorized sandbox.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-18",
+        "HAR-BUDGET-SAFETY"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-004",
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-EBOOK-PREFLIGHT",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Check generated PDF/EPUB structure and rendered-page quality for overflow, missing assets/fonts, broken links, navigation, legibility and accessibility metadata.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-20"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-ATTRIBUTION-MARGIN",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Simulate event joins, refunds, fees, attribution uncertainty and contribution-margin decisions with seeded synthetic datasets.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-20"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-008"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-BUDGET-SAFETY",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Prove daily/total cap boundaries, stale-spend data fail-closed behavior, kill switch, idempotency and reconciliation with a fake provider.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-18",
+        "HAR-MOD-19"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-004"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-WORKFLOW-REPLAY",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Prove pause/resume, duplicate delivery, retries, checkpoints and recovery across a synthetic product workflow.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-20"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-005"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
+    },
+    {
+      "id": "HAR-SOURCE-RIGHTS",
+      "owner": "shared",
+      "layer": "contract",
+      "status": "planned",
+      "purpose": "Check source/citation completeness, asset license metadata and traceability from claim to rendered product and sales copy.",
+      "command": null,
+      "triggers": [
+        "when a mapped external/critical contract changes",
+        "when its failure class is reported"
+      ],
+      "timeout_seconds": 900,
+      "dependencies": [
+        "HAR-MOD-04",
+        "HAR-MOD-07"
+      ],
+      "fixture_strategy": "Versioned synthetic fixtures with stable hashes; use a sandbox only under a separate bounded Work Order.",
+      "requires_services": false,
+      "external_network": false,
+      "production_data": false,
+      "external_side_effects": false,
+      "isolation": "Fake provider or local isolated fixture by default. No production data/accounts or real money/content mutation.",
+      "cleanup": "Dispose test fixtures and namespaces; no external resources by default.",
+      "evidence": "Work Order evidence bundle keyed by harness ID and exact commit.",
+      "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "implementation_gate": "Full HVS-PLAN-001 Source Pack approved; relevant connector/security contract and runner selected."
     }
   ]
 }

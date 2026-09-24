@@ -1,6 +1,6 @@
 # Project Overview
 
-Status: `DRAFT — FOUNDATION REVIEW PENDING`
+Status: `DRAFT — PRODUCT PLANNING ACTIVE`
 
 ## Goal
 Build a complete digital-product creation and marketing operations platform for an operator who can initiate a product such as an e-book and govern its creation, packaging, sales presence, social content, paid promotion and performance review.
@@ -14,4 +14,5 @@ The user explicitly chose a complete product target rather than an MVP. The prec
 - No external publishing, advertising spend or payments are active in this foundation increment.
 
 ## Current phase
-Foundation installation and engineering governance. Next phase: complete product discovery and Source Pack approval before the first product-code Work Order.
+HVS-PLAN-001 is active. A candidate 20-module domain map, e-book quality pipeline and module-to-harness plan are recorded in MODULE-CATALOG.md, MODULE-MAP.json and HARNESS-REGISTRY.json. The full Source Pack and product-code authorization remain pending.
+

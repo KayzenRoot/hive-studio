@@ -1,19 +1,20 @@
 # Checkpoint
 
-Status: `HVS-GOV-001_APPROVED`
+Status: HVS-PLAN-001_MODULE_MAP_CANDIDATE
 
-- Repository: `KayzenRoot/hive-studio`
-- Last accepted Work Order: `HVS-GOV-001`
-- Active Work Order: `HVS-PLAN-001`
-- Base commit for HVS-GOV-001: `fc43d93e219b4266a6d1c2b4745284fdbc1b98e0`
-- Accepted candidate head: `3dbf95140d458fcee420a8ba57879bf15379f3f4` (PR #2; checkpoint approval and final T0 are recorded in the same PR)
-- Current response checkpoint: `CP-HVS-GOV-001-002`
-- Accepted change: harness-first policy, targeted impact-based testing, registry contract, and durable per-response checkpoint protocol.
-- Completed baseline: GEF Bootstrap v1.0.0 and HIVE v1.0.3 are pinned as exact submodules; foundation CI is bounded.
-- Product code and product-module harnesses: not started; HVS-PLAN-001 must approve the full Source Pack and module-to-harness map.
-- Validation: the audited implementation head passed `node scripts/verify-foundation.mjs` in the Foundation Fast Gate; see PR #2 for final checkpoint-delta head checks.
-- Stop condition: no product implementation before HVS-PLAN-001 approval.
+- Repository: KayzenRoot/hive-studio
+- Last accepted Work Order: HVS-GOV-001
+- Active Work Order: HVS-PLAN-001
+- Accepted baseline: 7c7ffde53a0d6cb89011ff5cf4a5198371085018
+- Last accepted checkpoint: CP-HVS-GOV-001-002
+- Current response checkpoint: `CP-HVS-PLAN-001-001`
+- Candidate branch: planning/hvs-plan-001-module-map (PR pending)
+- Candidate change: 20 proposed modules, ebook quality/growth loop, capability-gated integration policy, and 28 planned product/shared harness entries.
+- Product code: not started. Only HAR-FOUNDATION-T0 is runnable; planned harness entries are not test evidence.
+- T0: pending exact-head PR CI, hard limit 5 minutes.
+- Remaining: complete and approve the full Source Pack; architecture, provider, runner, deployment, budgets and exact product requirements remain open.
+- Stop condition: no product implementation until HVS-PLAN-001 is complete and approved.
 
 ## Next action
 
-Complete HVS-PLAN-001: product discovery, full Source Pack, architecture decisions, and module-to-harness mapping before product code.
+Run the bounded T0 check and audit the exact PR head; continue HVS-PLAN-001 against the remaining acceptance criteria.

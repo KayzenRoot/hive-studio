@@ -8,3 +8,6 @@ Treat external publishing, payment and advertising spend as disabled by default.
 
 
 Harnesses and checkpoints are mandatory project contracts: resolve changes to the smallest sufficient IDs in `.engineering/HARNESS-REGISTRY.json`, include shared-contract tests when impact requires them, and never use production state or live financial/publishing actions in a harness. For every Hive Studio project response, persist a checkpoint event under `.engineering/checkpoints/`, update the current checkpoint pointer and report its ID/link; use `NO_STATE_CHANGE` when appropriate. Read `.engineering/CHECKPOINT-PROTOCOL.md`.
+
+
+For product planning, consult .engineering/MODULE-CATALOG.md and MODULE-MAP.json, but treat them as candidate until the full HVS-PLAN-001 Source Pack is accepted. Registry entries with status planned and command null are design records only, never runnable tests or passing proof.
