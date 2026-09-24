@@ -11,15 +11,15 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Workspaces, products, briefs, versions, lifecycle states and the single create-product entry point.",
-      "deps": [],
-      "req": [
-        "DIR-002",
-        "DIR-003"
-      ],
       "harness_ids": [
         "HAR-MOD-01"
       ],
       "acceptance_coverage": [
+        "DIR-002",
+        "DIR-003"
+      ],
+      "depends_on": [],
+      "requirement_ids": [
         "DIR-002",
         "DIR-003"
       ]
@@ -30,18 +30,18 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Evidence-led niche and audience research, demand signals, source freshness, confidence and competitor observations.",
-      "deps": [
-        "MOD-01"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-007",
-        "DIR-008"
-      ],
       "harness_ids": [
         "HAR-MOD-02"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007",
+        "DIR-008"
+      ],
+      "depends_on": [
+        "MOD-01"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-007",
         "DIR-008"
@@ -53,18 +53,18 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Audience outcomes, positioning, offer structure, pricing hypotheses, and optional main-offer, order-bump and upsell ladder.",
-      "deps": [
-        "MOD-01",
-        "MOD-02"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-008"
-      ],
       "harness_ids": [
         "HAR-MOD-03"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "depends_on": [
+        "MOD-01",
+        "MOD-02"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-008"
       ]
@@ -75,18 +75,18 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Source provenance, citations, claim-to-source links, licensing, permissions, freshness and asset origins.",
-      "deps": [
-        "MOD-01",
-        "MOD-02"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-007"
-      ],
       "harness_ids": [
         "HAR-MOD-04"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "depends_on": [
+        "MOD-01",
+        "MOD-02"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-007"
       ]
@@ -97,18 +97,18 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Structured outline and manuscript drafting, chapter editing, voice consistency, versions and review notes.",
-      "deps": [
-        "MOD-03",
-        "MOD-04"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-007"
-      ],
       "harness_ids": [
         "HAR-MOD-05"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "depends_on": [
+        "MOD-03",
+        "MOD-04"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-007"
       ]
@@ -119,17 +119,17 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Fact, consistency, originality, completeness, readability and policy checks; route risky claims to qualified human review.",
-      "deps": [
-        "MOD-04",
-        "MOD-05"
-      ],
-      "req": [
-        "DIR-007"
-      ],
       "harness_ids": [
         "HAR-MOD-06"
       ],
       "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "depends_on": [
+        "MOD-04",
+        "MOD-05"
+      ],
+      "requirement_ids": [
         "DIR-007"
       ]
     },
@@ -139,16 +139,16 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Art direction, covers, purposeful illustrations, diagrams, charts, captions, alt text and provenance-aware asset creation.",
-      "deps": [
-        "MOD-04"
-      ],
-      "req": [
-        "DIR-007"
-      ],
       "harness_ids": [
         "HAR-MOD-07"
       ],
       "acceptance_coverage": [
+        "DIR-007"
+      ],
+      "depends_on": [
+        "MOD-04"
+      ],
+      "requirement_ids": [
         "DIR-007"
       ]
     },
@@ -158,20 +158,20 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Compile structured content into polished digital and print-ready layouts; candidate outputs include accessible PDF and reflowable EPUB with rendered-page preflight.",
-      "deps": [
+      "harness_ids": [
+        "HAR-MOD-08"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "depends_on": [
         "MOD-05",
         "MOD-06",
         "MOD-07",
         "MOD-09"
       ],
-      "req": [
-        "DIR-003",
-        "DIR-007"
-      ],
-      "harness_ids": [
-        "HAR-MOD-08"
-      ],
-      "acceptance_coverage": [
+      "requirement_ids": [
         "DIR-003",
         "DIR-007"
       ]
@@ -182,19 +182,19 @@
       "group": "Product Factory",
       "scope": "NECESSARY",
       "purpose": "Versioned manuscripts, exports, images and creatives with checksums, licenses, prompts, lineage and rollback.",
-      "deps": [
-        "MOD-01",
-        "MOD-04",
-        "MOD-07"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-007"
-      ],
       "harness_ids": [
         "HAR-MOD-09"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-007"
+      ],
+      "depends_on": [
+        "MOD-01",
+        "MOD-04",
+        "MOD-07"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-007"
       ]
@@ -205,19 +205,19 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Truthful mobile-first offer pages, copy and creative variants, accessibility/performance checks and controlled experiments.",
-      "deps": [
-        "MOD-03",
-        "MOD-06",
-        "MOD-08"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-008"
-      ],
       "harness_ids": [
         "HAR-MOD-10"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "depends_on": [
+        "MOD-03",
+        "MOD-06",
+        "MOD-08"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-008"
       ]
@@ -228,18 +228,18 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Capability-gated commerce adapters for product/checkout actions, purchase/refund events, entitlement and delivery handoff.",
-      "deps": [
-        "MOD-10",
-        "MOD-18",
-        "MOD-19"
-      ],
-      "req": [
-        "DIR-003"
-      ],
       "harness_ids": [
         "HAR-MOD-11"
       ],
       "acceptance_coverage": [
+        "DIR-003"
+      ],
+      "depends_on": [
+        "MOD-10",
+        "MOD-18",
+        "MOD-19"
+      ],
+      "requirement_ids": [
         "DIR-003"
       ]
     },
@@ -249,18 +249,18 @@
       "group": "Growth & Revenue",
       "scope": "IMPORTANT",
       "purpose": "Consent-aware onboarding, support, feedback, refund insight and relevant next-product journeys.",
-      "deps": [
-        "MOD-11",
-        "MOD-16",
-        "MOD-19"
-      ],
-      "req": [
-        "DIR-008"
-      ],
       "harness_ids": [
         "HAR-MOD-12"
       ],
       "acceptance_coverage": [
+        "DIR-008"
+      ],
+      "depends_on": [
+        "MOD-11",
+        "MOD-16",
+        "MOD-19"
+      ],
+      "requirement_ids": [
         "DIR-008"
       ]
     },
@@ -270,21 +270,21 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Profile strategy, content calendar, captions, carousels/reels/story assets and only officially supported publishing operations.",
-      "deps": [
+      "harness_ids": [
+        "HAR-MOD-13"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-008"
+      ],
+      "depends_on": [
         "MOD-03",
         "MOD-07",
         "MOD-08",
         "MOD-18",
         "MOD-19"
       ],
-      "req": [
-        "DIR-003",
-        "DIR-008"
-      ],
-      "harness_ids": [
-        "HAR-MOD-13"
-      ],
-      "acceptance_coverage": [
+      "requirement_ids": [
         "DIR-003",
         "DIR-008"
       ]
@@ -295,22 +295,22 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Meta campaign planning, audience/creative variants, preview, launch, measurement and pause through explicit account capabilities and spend policy.",
-      "deps": [
+      "harness_ids": [
+        "HAR-MOD-14"
+      ],
+      "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004",
+        "DIR-008"
+      ],
+      "depends_on": [
         "MOD-03",
         "MOD-10",
         "MOD-15",
         "MOD-18",
         "MOD-19"
       ],
-      "req": [
-        "DIR-003",
-        "DIR-004",
-        "DIR-008"
-      ],
-      "harness_ids": [
-        "HAR-MOD-14"
-      ],
-      "acceptance_coverage": [
+      "requirement_ids": [
         "DIR-003",
         "DIR-004",
         "DIR-008"
@@ -322,17 +322,17 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Per-account and per-campaign operating modes, hard budget caps, approval rules, kill switch, idempotency, spend ledger and fail-closed stop behavior.",
-      "deps": [
-        "MOD-18",
-        "MOD-19"
-      ],
-      "req": [
-        "DIR-004"
-      ],
       "harness_ids": [
         "HAR-MOD-15"
       ],
       "acceptance_coverage": [
+        "DIR-004"
+      ],
+      "depends_on": [
+        "MOD-18",
+        "MOD-19"
+      ],
+      "requirement_ids": [
         "DIR-004"
       ]
     },
@@ -342,19 +342,19 @@
       "group": "Growth & Revenue",
       "scope": "NECESSARY",
       "purpose": "Join consented funnel, sales, ad cost, fees and refund signals; report uncertainty and optimize for net contribution rather than clicks alone.",
-      "deps": [
+      "harness_ids": [
+        "HAR-MOD-16"
+      ],
+      "acceptance_coverage": [
+        "DIR-008"
+      ],
+      "depends_on": [
         "MOD-10",
         "MOD-11",
         "MOD-14",
         "MOD-19"
       ],
-      "req": [
-        "DIR-008"
-      ],
-      "harness_ids": [
-        "HAR-MOD-16"
-      ],
-      "acceptance_coverage": [
+      "requirement_ids": [
         "DIR-008"
       ]
     },
@@ -364,22 +364,22 @@
       "group": "Platform Services",
       "scope": "NECESSARY",
       "purpose": "Resumable end-to-end workflows with checkpoints, retries, idempotency, approvals, bounded jobs and clear recovery states.",
-      "deps": [
+      "harness_ids": [
+        "HAR-MOD-17"
+      ],
+      "acceptance_coverage": [
+        "DIR-002",
+        "DIR-005",
+        "DIR-006"
+      ],
+      "depends_on": [
         "MOD-01",
         "MOD-15",
         "MOD-18",
         "MOD-19",
         "MOD-20"
       ],
-      "req": [
-        "DIR-002",
-        "DIR-005",
-        "DIR-006"
-      ],
-      "harness_ids": [
-        "HAR-MOD-17"
-      ],
-      "acceptance_coverage": [
+      "requirement_ids": [
         "DIR-002",
         "DIR-005",
         "DIR-006"
@@ -391,17 +391,17 @@
       "group": "Platform Services",
       "scope": "NECESSARY",
       "purpose": "Capability registry, API/version and permission checks, credential references, quotas, model routing, cost tracking and safe fallbacks.",
-      "deps": [
-        "MOD-19"
-      ],
-      "req": [
-        "DIR-003",
-        "DIR-004"
-      ],
       "harness_ids": [
         "HAR-MOD-18"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "depends_on": [
+        "MOD-19"
+      ],
+      "requirement_ids": [
         "DIR-003",
         "DIR-004"
       ]
@@ -412,15 +412,15 @@
       "group": "Platform Services",
       "scope": "NECESSARY",
       "purpose": "Identity, workspace boundaries, least privilege, consent, retention/deletion, secret redaction, revocation and immutable action evidence.",
-      "deps": [],
-      "req": [
-        "DIR-003",
-        "DIR-004"
-      ],
       "harness_ids": [
         "HAR-MOD-19"
       ],
       "acceptance_coverage": [
+        "DIR-003",
+        "DIR-004"
+      ],
+      "depends_on": [],
+      "requirement_ids": [
         "DIR-003",
         "DIR-004"
       ]
@@ -431,17 +431,17 @@
       "group": "Platform Services",
       "scope": "NECESSARY",
       "purpose": "Harness registry, deterministic fixtures, connector fakes, workflow simulations, e-book quality evaluations and bounded evidence packets.",
-      "deps": [],
-      "req": [
+      "harness_ids": [
+        "HAR-MOD-20"
+      ],
+      "acceptance_coverage": [
         "DIR-005",
         "DIR-006",
         "DIR-007",
         "DIR-008"
       ],
-      "harness_ids": [
-        "HAR-MOD-20"
-      ],
-      "acceptance_coverage": [
+      "depends_on": [],
+      "requirement_ids": [
         "DIR-005",
         "DIR-006",
         "DIR-007",
