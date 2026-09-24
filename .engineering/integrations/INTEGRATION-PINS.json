@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PROPOSED_PENDING_EXACT_HEAD_AUDIT",
+  "status": "APPROVED",
   "integrations": {
     "gef_bootstrap": {
       "repository": "https://github.com/KayzenRoot/gef-bootstrap",

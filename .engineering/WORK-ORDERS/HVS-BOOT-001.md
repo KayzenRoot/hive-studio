@@ -1,6 +1,6 @@
 # HVS-BOOT-001 — GEF Bootstrap and HIVE Foundation
 
-- Status: `IN_PROGRESS`
+- Status: `APPROVED`
 - Risk: `STANDARD` (repository/developer-tooling setup; no product financial action)
 - Repository: `KayzenRoot/hive-studio`
 - Base SHA: `9053a1aef09882b13d501b6238623da6060b30cb`
@@ -16,7 +16,7 @@ Repository was empty. GEF Bootstrap v1.0.0 is a source workspace, not a publishe
 - Pin GEF v1.0.0 and HIVE v1.0.3 at exact commits.
 - Add `.gitmodules`, setup docs, integration-pin manifest and deterministic foundation validator.
 - Add initial canonical project source files marked draft where product decisions remain open.
-- Add Codex/agent rules, test budgets and read-only fast/GEF workflows with hard timeouts.
+- Add Codex/agent rules, test budgets, a checkout-free fast gate, a pin-change source contract and isolated GEF validation with hard timeouts.
 - Create an exact-base Context Lock and this Work Order.
 
 ## OUT OF SCOPE
@@ -65,6 +65,14 @@ One focused PR, pinned submodules, Source Pack starter, AGENTS/Codex contract, b
 
 ## REVIEW FORMAT
 Final review in Brazilian Portuguese: verdict, base/head, files, check names/results/durations, tests not run and reason, upstream HIVE caveat, risks, exact-head evidence and checkpoint disposition.
+
+## AUDIT EVIDENCE
+
+- Candidate head audited: `b5acd2594a5c8462a937294af3af294b72a63914`; base: `9053a1aef09882b13d501b6238623da6060b30cb`.
+- The GitHub PR merge tree matched the candidate tree exactly (`583325bf781908d61c46089122f6052ea35144ba`).
+- Fast Gate: PASS, 6 seconds. Integration Source Contract: PASS, 11 seconds. GEF full validation plus `npm audit --audit-level=high`: PASS, 19 seconds.
+- An earlier fast-gate attempt exposed a parser defect with Git's tagged submodule output; the verifier was corrected and the final candidate passed.
+- HIVE Docker startup/runtime was not run in this repository setup; no runtime-health claim is made.
 
 ## STOP CONDITION
 APPROVED only if all criteria have exact-head evidence and no unresolved HIGH/CRITICAL defect. Otherwise issue only a same-Work-Order Correction Delta or mark BLOCKED. Do not create HVS-PLAN-001 implementation work before approval.
